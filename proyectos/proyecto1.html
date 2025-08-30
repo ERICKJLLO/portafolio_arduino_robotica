@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Proyecto 1 - Encender un LED</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<h1>Proyecto 1: Encender un LED</h1>
+		<nav>
+			<a href="index.html">Inicio</a>
+			<a href="proyectos.html">Proyectos</a>
+		</nav>
+	</header>
+
+	<main class="card">
+		<h2>Objetivo</h2>
+		<p>Aprender a encender un LED con Arduino usando digitalWrite y pinMode.</p>
+
+		<h3>Materiales</h3>
+		<ul>
+			<li>Placa Arduino (UNO, Nano, etc.)</li>
+			<li>LED</li>
+			<li>Resistencia 220Ω</li>
+			<li>Cables y protoboard</li>
+		</ul>
+
+		<h3>Montaje</h3>
+		<p>Conectar el ánodo del LED (pierna larga) al pin 13 (o el pin que elijas) mediante la resistencia; el cátodo a GND.</p>
+
+		<h3>Código de ejemplo</h3>
+		<pre>// void setup() { pinMode(13, OUTPUT); }
+// void loop() { digitalWrite(13, HIGH); delay(1000); digitalWrite(13, LOW); delay(1000); }</pre>
+
+		<p class="hint">Próximamente: simulador y área para escribir código desde la página.</p>
+
+		<div style="margin-top:12px;">
+			<a class="btn" href="proyectos.html">Volver a proyectos</a>
+			<a class="btn" href="index.html">Volver al inicio</a>
+		</div>
+	</main>
+
+	<footer class="site-footer">
+		<p>Plantilla de proyecto · Duplica este archivo para crear los demás proyectos.</p>
+	</footer>
+</body>
+</html>

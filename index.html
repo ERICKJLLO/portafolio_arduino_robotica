@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Introducción a Arduino - Simulador</title>
+	<link rel="stylesheet" href="estilos/styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<a class="home-btn" href="https://suamoblado.com/portafolio/appEscolares.php" title="Volver al portafolio">Portafolio</a>
+		<h1>Arduino y Robótica - Recursos y Proyectos</h1>
+		<nav>
+			<a href="#introduccion">Introducción</a>
+			<a href="#instalacion">Instalación</a>
+			<a href="#programacion">Cómo programar</a>
+			<a href="proyectos/proyectos.html">Proyectos</a>
+		</nav>
+	</header>
+
+	<main>
+		<section id="introduccion" class="card">
+			<h2>¿Qué es Arduino?</h2>
+			<p>Arduino es una plataforma de hardware y software abierta para crear proyectos electrónicos. Aquí encontrarás una introducción, guías para instalar el entorno, ejemplos de código y recursos para aprender.</p>
+			
+		</section>
+
+		<section id="instalacion" class="card">
+			<h2>Instalación del IDE de Arduino</h2>
+			<ol>
+				<li>Visita https://www.arduino.cc y descarga el IDE (o usa el Arduino Web Editor).</li>
+				<li>Instala los drivers si tu placa lo requiere (Windows suele pedirlos la primera vez).</li>
+				<li>Conecta tu placa Arduino por USB, abre el IDE y selecciona la placa y el puerto en el menú Herramientas.</li>
+				<li>Prueba subiendo el ejemplo "Blink" desde Archivo → Ejemplos → 01.Basics → Blink.</li>
+			</ol>
+			<p class="hint">Vídeo recomendado (instalación):</p>
+			<!-- embed del vídeo indicado por el usuario -->
+			<div style="max-width:720px;">
+				<iframe width="100%" height="405" src="https://www.youtube.com/embed/QAXeJ2w5wlc" title="Instalación Arduino" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+			<p class="hint">Usa sólo vídeos del canal/playlist indicado para el material de instalación.</p>
+			<p class="hint">Si quieres, puedo añadir capturas o un vídeo con estos pasos.</p>
+		</section>
+
+		<section id="programacion" class="card">
+			<h2>Cómo programar: conceptos básicos</h2>
+			<ul>
+				<li><strong>setup()</strong>: se ejecuta una vez al arrancar; se configuran pines y periféricos.</li>
+				<li><strong>loop()</strong>: se ejecuta en bucle; aquí va la lógica principal.</li>
+				<li>Funciones útiles: digitalWrite(pin, HIGH/LOW), pinMode(pin, INPUT/OUTPUT), delay(ms).</li>
+			</ul>
+			<p>Ejemplo mínimo (Blink):</p>
+			<pre>// void setup() { pinMode(LED_BUILTIN, OUTPUT); }
+// void loop() { digitalWrite(LED_BUILTIN, HIGH); delay(1000); digitalWrite(LED_BUILTIN, LOW); delay(1000); }</pre>
+			<p class="hint">Más adelante añadiremos un simulador integrado y un espacio para escribir y probar código desde la página.</p>
+		</section>
+
+		<section id="proyectos" class="card">
+			<h2>Proyectos</h2>
+			<div class="project-list">
+				<article class="project-card">
+					<h3>Proyecto 1: Encender un LED</h3>
+					<p>Objetivo: aprender digitalWrite y configuración de pines.</p>
+					<!-- vínculo al índice dentro de la carpeta proyectos -->
+					<a class="btn" href="proyectos/proyectos.html">Ir a proyectos</a>
+				</article>
+				<!-- Agregar más tarjetas de proyecto aquí -->
+			</div>
+		</section>
+
+		<!-- Sección del simulador removida temporalmente. Se añadirá más adelante con el editor y el mini-juego. -->
+
+	</main>
+
+	<footer class="site-footer">
+		<p>Proyecto educativo · Página base para los 15 proyectos de Arduino</p>
+	</footer>
+
+	<!-- pequeño script para scroll suave y mejora UX -->
+	<script>
+		// smooth scroll for internal links
+		(function(){
+			document.querySelectorAll('a[href^="#"]').forEach(a=>{
+				a.addEventListener('click', function(e){
+					const target = document.querySelector(this.getAttribute('href'));
+					if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+				});
+			});
+			// respect user preference for reduced motion
+			if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+				document.documentElement.style.scrollBehavior = 'auto';
+			}
+		})();
+	</script>
+
+	<!-- script: encoger header al hacer scroll + efecto "absorber" -->
+	<script>
+		(function(){
+			const header = document.querySelector('.site-header');
+			const root = document.documentElement;
+			const main = document.querySelector('main');
+			if(!header || !main) return;
+			// no animar si el usuario lo prefiere
+			const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			if(prefersReduced) return;
+			const SHRINK_THRESHOLD = 60;
+			const ABSORB_MAX_SCROLL = 420; // px donde absorb llega a 1
+			let ticking = false;
+
+			// calcula posición x,y para el overlay (centro de header)
+			function headerCenter() {
+				const rect = header.getBoundingClientRect();
+				const x = rect.left + rect.width / 2;
+				const y = rect.top + rect.height / 2;
+				// convertir a porcentajes relativos a viewport para usar en CSS custom props
+				const vx = (x / window.innerWidth) * 100;
+				const vy = (y / window.innerHeight) * 100;
+				return {vx: vx + '%', vy: vy + '%'};
+			}
+
+			function onScroll(){
+				if(!ticking){
+					window.requestAnimationFrame(()=> {
+						const y = window.scrollY || window.pageYOffset || 0;
+						// header shrink
+						if(y > SHRINK_THRESHOLD) header.classList.add('shrink');
+						else header.classList.remove('shrink');
+
+						// absorb value 0..1 mapped from 0..ABSORB_MAX_SCROLL
+						let v = Math.max(0, Math.min(1, y / ABSORB_MAX_SCROLL));
+						// suavizar progresión (ease-out)
+						v = 1 - Math.pow(1 - v, 1.8);
+
+						// actualizar variables CSS
+						root.style.setProperty('--absorb', v.toFixed(3));
+						const pos = headerCenter();
+						root.style.setProperty('--absorb-x', pos.vx);
+						root.style.setProperty('--absorb-y', pos.vy);
+
+						// toggle class para aplicar filtros si v>0
+						if(v > 0.01) main.classList.add('absorbing');
+						else main.classList.remove('absorbing');
+
+						ticking = false;
+					});
+					ticking = true;
+				}
+			}
+			window.addEventListener('scroll', onScroll, {passive:true});
+			// inicializar estado
+			onScroll();
+		})();
+	</script>
+
+	<!-- Script del simulador eliminado temporalmente. -->
+</body>
+</html>

@@ -1,0 +1,207 @@
+:root{
+	--bg-grad: linear-gradient(180deg, #0f172a 0%, #071126 50%, #041023 100%);
+	--card-bg: rgba(255,255,255,0.03);
+	--glass: rgba(255,255,255,0.04);
+	--accent: #00b4d8;
+	--muted: rgba(255,255,255,0.7);
+	--card-border: rgba(255,255,255,0.06);
+	--absorb: 0; /* 0..1 */
+	--absorb-x: 50%; /* posición inicial */
+	--absorb-y: 0%;
+	--absorb-size: 0px;
+}
+*{box-sizing:border-box}
+body{
+	margin:0;
+	font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+	background: var(--bg-grad);
+	color: #e6eef8;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	line-height:1.45;
+	padding-bottom:40px;
+}
+/* header layout: three columns (botón | título | nav) */
+.site-header{
+	position:sticky;
+	top:0;
+	backdrop-filter: blur(6px);
+	background: linear-gradient(90deg, rgba(0,0,0,0.25), rgba(255,255,255,0.02));
+	border-bottom:1px solid rgba(255,255,255,0.04);
+	color: #fff;
+	padding:14px 20px;
+	display:grid;
+	grid-template-columns: auto 1fr auto;
+	align-items:center;
+	gap:12px;
+	z-index:10;
+	transition: padding 200ms ease, box-shadow 200ms ease, grid-template-columns 200ms ease;
+}
+.home-btn{
+	display:inline-block;
+	background:rgba(255,255,255,0.04);
+	color:var(--muted);
+	padding:8px 12px;
+	border-radius:10px;
+	text-decoration:none;
+	font-weight:700;
+	border:1px solid rgba(255,255,255,0.03);
+	transition:all .16s ease, transform 180ms ease, padding 180ms ease, background 160ms ease;
+}
+.home-btn:hover{
+	background:linear-gradient(90deg,var(--accent),#0066ff);
+	color:#021124;
+	box-shadow:0 8px 26px rgba(3,169,244,0.12);
+	transform:translateY(-2px);
+}
+.site-header h1{
+	margin:0;
+	font-size:1.25rem;           /* más grande para destacar */
+	font-weight:800;
+	letter-spacing:0.6px;
+	text-align:left;
+	/* degradado en el texto (se mantiene el mismo tono) */
+	background: linear-gradient(90deg, rgba(155,231,255,0.95) 0%, rgba(116,210,255,0.95) 40%, rgba(201,240,255,0.95) 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	/* animación: desplaza el gradiente horizontalmente para crear el resplandor */
+	background-size: 200% 100%;
+	animation: shimmer 4s linear infinite;
+	/* sombra sutil para contraste con el fondo oscuro */
+	text-shadow: 0 2px 12px rgba(0,0,0,0.45);
+	padding-right:8px;
+	transition: font-size 220ms ease, padding 200ms ease, text-shadow 200ms ease, background-position 4000ms linear;
+}
+
+@keyframes shimmer {
+	0%   { background-position: 0% 50%; }
+	50%  { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+}
+.site-header nav a{
+	color:var(--muted);
+	margin-left:14px;
+	text-decoration:none;
+	font-weight:600;
+	padding:8px 10px;
+	border-radius:8px;
+	transition:all .18s ease, padding 180ms ease, transform 180ms ease, background 160ms ease;
+}
+.site-header nav a:hover{
+	color:#021124;
+	background:linear-gradient(90deg,var(--accent),#0066ff);
+	box-shadow:0 6px 18px rgba(3,169,244,0.12);
+	transform:translateY(-2px);
+}
+main{max-width:1100px;margin:28px auto;padding:0 18px}
+.card{
+	background:var(--card-bg);
+	border:1px solid var(--card-border);
+	padding:18px;border-radius:12px;margin-bottom:18px;
+	box-shadow: 0 6px 24px rgba(2,6,23,0.55);
+	overflow: hidden;
+}
+h2{margin-top:0;color:#eaf6ff}
+.project-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.project-card{
+	padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+	border:1px solid rgba(255,255,255,0.03);transition:transform .18s ease, box-shadow .18s ease;
+}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+.btn{
+	display:inline-block;background:linear-gradient(90deg,var(--accent),#0066ff);
+	color:#021124;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:700;
+	box-shadow:0 8px 20px rgba(3,169,244,0.12);border:none;cursor:pointer;
+}
+pre{background:rgba(0,0,0,0.18);padding:12px;border-radius:8px;overflow:auto;color:#dff2ff}
+.hint{color:rgba(255,255,255,0.75);font-size:0.95rem}
+.site-footer{text-align:center;padding:18px;color:var(--muted);font-size:.9rem;margin-top:12px}
+@media(max-width:720px){
+	.site-header{padding:12px;grid-template-columns:auto 1fr}
+	.site-header h1{font-size:1rem} /* reducir en móvil para no romper el layout */
+ 	.site-header nav a{margin-left:8px;padding:6px 8px}
+ 	main{margin:18px auto;padding:0 12px}
+}
+/* simple entrance animation */
+@media (prefers-reduced-motion: no-preference) {
+	.card{animation:fadeUp .45s ease both}
+	@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+}
+
+/* estado "encogido" cuando se hace scroll */
+.site-header.shrink{
+	padding:8px 14px;
+	box-shadow: 0 8px 30px rgba(2,6,23,0.65);
+	grid-template-columns: auto 1fr auto;
+}
+
+/* reducir visualmente botones / enlaces al encoger */
+.site-header.shrink .home-btn{
+	padding:6px 10px;
+	transform:translateY(-1px) scale(0.98);
+}
+.site-header.shrink h1{
+	font-size:1rem;            /* más pequeño para caber */
+	letter-spacing:0.4px;
+	text-shadow: 0 1px 8px rgba(0,0,0,0.45);
+}
+.site-header.shrink nav a{
+	padding:6px 8px;
+	font-size:0.95rem;
+	transform:translateY(0);
+}
+
+/* overlay circular que "absbe" visualmente el contenido */
+main{
+	/* permitir transform y variables */
+	transition: transform 200ms ease, filter 200ms ease;
+	/* usar variables para ligero movimiento/escala */
+	transform-origin: center top;
+}
+
+/* pseudo-elemento fijo que crece desde la cabecera creando la ilusión de succión/absorción */
+main::before{
+	content: "";
+	pointer-events: none;
+	position: fixed;
+	left: calc(var(--absorb-x));
+	top: calc(var(--absorb-y));
+	width: 1px;
+	height: 1px;
+	translate: -50% 0; /* centrar en x */
+	border-radius: 50%;
+	/* GRADIENTE LUMINOSO y sutil: no oscurece el contenido */
+	background: radial-gradient(circle at 50% 40%,
+		rgba(255,255,255,0.12) 0%,
+		rgba(255,255,255,0.06) 30%,
+		rgba(255,255,255,0.00) 100%);
+	/* tamaño controlado por --absorb (más suave que antes) */
+	transform: translate(-50%, 0) scale(calc(1 + var(--absorb) * 18));
+	opacity: calc(var(--absorb) * 0.35); /* opacidad reducida para evitar oscurecer */
+	transition: transform 220ms cubic-bezier(.2,.9,.2,1), opacity 180ms ease;
+	z-index: 6;
+}
+
+/* efecto sobre el contenido cuando se absorbe: sin blur/oscurecimiento */
+main.absorbing,
+main.absorbing *{
+	/* ya no modificamos brillo/blur: sólo ligera interacción visual */
+	filter: none;
+}
+
+/* desplaza y escala el contenido levemente según --absorb para sensación de succión */
+main{
+	transform: translateY(calc(var(--absorb) * -12px)) scale(calc(1 - var(--absorb) * 0.01));
+}
+
+@media(max-width:720px){
+	main::before{display:none} /* evitar overlay agresivo en móviles */
+	main{transform: translateY(calc(var(--absorb) * -6px)) scale(calc(1 - var(--absorb) * 0.005));}
+}
+
+/* evitar animaciones si el usuario prefiere reducir movimiento */
+@media (prefers-reduced-motion: reduce) {
+	main::before, main { transition: none !important; animation: none !important; }
+}
+
