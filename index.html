@@ -35,24 +35,78 @@
 			</ol>
 			<p class="hint">Vídeo recomendado (instalación):</p>
 			<!-- embed del vídeo indicado por el usuario -->
-			<div style="max-width:720px;">
+			<div style="max-width:720px;margin:0 auto;display:block;">
 				<iframe width="100%" height="405" src="https://www.youtube.com/embed/QAXeJ2w5wlc" title="Instalación Arduino" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
 			<p class="hint">Usa sólo vídeos del canal/playlist indicado para el material de instalación.</p>
-			<p class="hint">Si quieres, puedo añadir capturas o un vídeo con estos pasos.</p>
+		
 		</section>
 
 		<section id="programacion" class="card">
 			<h2>Cómo programar: conceptos básicos</h2>
-			<ul>
-				<li><strong>setup()</strong>: se ejecuta una vez al arrancar; se configuran pines y periféricos.</li>
-				<li><strong>loop()</strong>: se ejecuta en bucle; aquí va la lógica principal.</li>
-				<li>Funciones útiles: digitalWrite(pin, HIGH/LOW), pinMode(pin, INPUT/OUTPUT), delay(ms).</li>
-			</ul>
-			<p>Ejemplo mínimo (Blink):</p>
-			<pre>// void setup() { pinMode(LED_BUILTIN, OUTPUT); }
+			<!-- Dos columnas controladas por CSS -->
+			<div class="program-layout">
+				<div>
+					<p style="margin-top:0;">Explicaciones claras y ejemplos prácticos para comenzar con Arduino sin abrumarte.</p>
+
+					<h3>1. Estructura básica</h3>
+					<p><strong>setup()</strong> → se ejecuta una vez; <strong>loop()</strong> → se repite. Evita bloquear el loop para mantener la respuesta del sistema.</p>
+
+					<h3>2. Entradas y salidas</h3>
+					<ul>
+						<li><strong>pinMode(pin, MODE)</strong>: INPUT / INPUT_PULLUP / OUTPUT.</li>
+						<li><strong>digitalRead / digitalWrite</strong>: señales digitales (HIGH/LOW).</li>
+						<li><strong>analogRead(pin)</strong>: lectura analógica (0..1023).</li>
+						<li><strong>analogWrite(pin, value)</strong>: PWM (0..255) en pines compatibles.</li>
+					</ul>
+
+					<h3>3. Temporización: delay vs millis</h3>
+					<p><code>delay()</code> detiene todo; <code>millis()</code> permite temporizar sin bloquear y controlar varias tareas.</p>
+
+					<h3>4. Ejemplos prácticos</h3>
+					<p style="margin-bottom:6px;"><strong>Blink (simple)</strong></p>
+					<pre>// void setup() { pinMode(LED_BUILTIN, OUTPUT); }
 // void loop() { digitalWrite(LED_BUILTIN, HIGH); delay(1000); digitalWrite(LED_BUILTIN, LOW); delay(1000); }</pre>
-			<p class="hint">Más adelante añadiremos un simulador integrado y un espacio para escribir y probar código desde la página.</p>
+
+					<p style="margin-bottom:6px;"><strong>Blink no bloqueante (millis)</strong></p>
+					<pre>// const int led = LED_BUILTIN;
+// unsigned long prev = 0;
+// unsigned long interval = 500;
+// void setup(){ pinMode(led, OUTPUT); }
+// void loop(){
+//   unsigned long now = millis();
+//   if(now - prev >= interval){
+//     prev = now;
+//     digitalWrite(led, !digitalRead(led)); // alterna LED
+//   }
+//   // aquí puedes leer sensores o atender botones sin bloquear
+// }</pre>
+
+					<h3>5. Lectura de botones y debounce</h3>
+					<p>Usa <code>INPUT_PULLUP</code> para simplificar el cableado y aplica un debounce (10–50 ms) en software para lecturas estables.</p>
+				</div>
+
+				<aside class="program-sidebar">
+					<h4 style="margin-top:0;margin-bottom:8px;">Resumen rápido</h4>
+					<ul style="padding-left:18px;margin-top:0;margin-bottom:10px;line-height:1.35;">
+						<li>Inicia <code>Serial.begin(9600)</code> para depurar.</li>
+						<li>Usa constantes descriptivas: <code>const int LED = 13;</code></li>
+						<li>Evita <code>delay()</code> si necesitas multitarea.</li>
+					</ul>
+
+					<h4 style="margin-bottom:8px;">Checklist antes de subir</h4>
+					<ul style="padding-left:18px;margin-top:0;margin-bottom:12px;line-height:1.35;">
+						<li>Placa y puerto seleccionados en el IDE.</li>
+						<li>Cable USB y alimentación OK.</li>
+						<li>Polaridad del LED y conexiones verificadas.</li>
+					</ul>
+
+					<h4 style="margin-bottom:6px;">Siguiente paso</h4>
+					<p style="margin:0 0 8px 0;">Añadir diagramas de conexión y ejercicios prácticos. Próximamente, el simulador para probar código en la web.</p>
+					<a class="btn" href="proyectos/proyectos.html" style="display:inline-block;margin-top:8px;">Ir a proyectos</a>
+				</aside>
+			</div>
+			<p class="hint" style="margin-top:14px;">Próximos pasos: añadir imágenes de conexión, simulador por proyecto y retos interactivos al final de cada lección.</p>
 		</section>
 
 		<section id="proyectos" class="card">

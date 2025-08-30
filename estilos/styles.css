@@ -205,3 +205,61 @@ main{
 	main::before, main { transition: none !important; animation: none !important; }
 }
 
+/* Ajustes para la sección de programación (evita recortes y mejora responsividad) */
+#programacion.card {
+	/* permitir que el contenido interno pueda crecer sin ser recortado */
+	overflow: visible;
+}
+
+/* layout de dos columnas para la sección de programación:
+   asegurar que ambas columnas se estiren a la misma altura */
+.program-layout{
+	display: grid;
+	grid-template-columns: 1fr 320px; /* columna principal + sidebar fijo */
+	gap: 20px;
+	align-items: stretch;
+	align-content: stretch;
+}
+
+/* forzar estirado por columna y evitar que la sidebar quede "recortada" */
+.program-layout > div,
+.program-layout > aside {
+	align-self: stretch;
+}
+
+/* barra lateral: usar flex column para que el botón quede al final si el contenido principal es mayor */
+.program-sidebar{
+	display: flex;
+	flex-direction: column;
+	background: rgba(255,255,255,0.02);
+	border: 1px solid rgba(255,255,255,0.03);
+	padding: 16px;
+	border-radius: 8px;
+	min-width: 220px;
+	box-sizing: border-box;
+	overflow: visible;
+	height: 100%;
+}
+
+/* empujar el botón al final de la sidebar */
+.program-sidebar .btn{
+	margin-top: auto;
+}
+
+/* mejorar el comportamiento de los bloques de código para evitar desbordes horizontales */
+pre{
+	white-space: pre-wrap; /* permite saltos de línea en líneas largas */
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+/* en pantallas pequeñas, apilar el sidebar debajo del contenido principal */
+@media (max-width: 880px){
+	.program-layout{
+		grid-template-columns: 1fr; /* una sola columna */
+	}
+	.program-sidebar{
+		margin-top: 8px;
+	}
+}
+
