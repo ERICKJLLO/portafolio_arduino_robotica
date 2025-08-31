@@ -68,48 +68,79 @@
 
 					<h3>4. Ejemplos prácticos</h3>
 					<p style="margin-bottom:6px;"><strong>Blink (simple)</strong></p>
-					<pre>// void setup() { pinMode(LED_BUILTIN, OUTPUT); }
-// void loop() { digitalWrite(LED_BUILTIN, HIGH); delay(1000); digitalWrite(LED_BUILTIN, LOW); delay(1000); }</pre>
+					<div class="code-example" data-example="blink-simple">
+						<pre>// void setup() { pinMode(LED_BUILTIN, OUTPUT); }
+	// void loop() { digitalWrite(LED_BUILTIN, HIGH); delay(1000); digitalWrite(LED_BUILTIN, LOW); delay(1000); }</pre>
+						<div class="code-actions">
+							<button class="btn run-btn" data-action="run" data-example="blink-simple">Ejecutar en simulador</button>
+							<button class="btn" data-action="stop" data-example="blink-simple">Detener</button>
+						</div>
+					</div>
 
 					<p style="margin-bottom:6px;"><strong>Blink no bloqueante (millis)</strong></p>
-					<pre>// const int led = LED_BUILTIN;
-// unsigned long prev = 0;
-// unsigned long interval = 500;
-// void setup(){ pinMode(led, OUTPUT); }
-// void loop(){
-//   unsigned long now = millis();
-//   if(now - prev >= interval){
-//     prev = now;
-//     digitalWrite(led, !digitalRead(led)); // alterna LED
-//   }
-//   // aquí puedes leer sensores o atender botones sin bloquear
-// }</pre>
+					<div class="code-example" data-example="blink-millis">
+						<pre>// const int led = LED_BUILTIN;
+	// unsigned long prev = 0;
+	// unsigned long interval = 500;
+	// void setup(){ pinMode(led, OUTPUT); }
+	// void loop(){
+	//   unsigned long now = millis();
+	//   if(now - prev >= interval){
+	//     prev = now;
+	//     digitalWrite(led, !digitalRead(led)); // alterna LED
+	//   }
+	//   // aquí puedes leer sensores o atender botones sin bloquear
+	// }</pre>
+						<div class="code-actions">
+							<button class="btn run-btn" data-action="run" data-example="blink-millis">Ejecutar en simulador</button>
+							<button class="btn" data-action="stop" data-example="blink-millis">Detener</button>
+						</div>
+					</div>
 
 					<h3>5. Lectura de botones y debounce</h3>
 					<p>Usa <code>INPUT_PULLUP</code> para simplificar el cableado y aplica un debounce (10–50 ms) en software para lecturas estables.</p>
 				</div>
 
 				<aside class="program-sidebar">
-					<h4 style="margin-top:0;margin-bottom:8px;">Resumen rápido</h4>
-					<ul style="padding-left:18px;margin-top:0;margin-bottom:10px;line-height:1.35;">
-						<li>Inicia <code>Serial.begin(9600)</code> para depurar.</li>
-						<li>Usa constantes descriptivas: <code>const int LED = 13;</code></li>
-						<li>Evita <code>delay()</code> si necesitas multitarea.</li>
-					</ul>
+					<!-- simulador grande a la derecha -->
+					<div class="simulator-panel" id="sim-panel" aria-live="polite">
+						<h3 style="margin-top:0;margin-bottom:8px;">Simulador</h3>
+						<div class="simulator-main">
+							<div class="sim-device">
+								<label style="display:block;font-size:.9rem;margin-bottom:8px;color:var(--muted)">LED virtual</label>
+								<div class="led-large" id="sim-led" title="LED virtual"></div>
+							</div>
+							<div class="sim-console" id="sim-console" aria-hidden="false" role="log">
+								<div class="console-header">Serial</div>
+								<div class="console-body" id="sim-console-body"></div>
+							</div>
+						</div>
+						<div class="sim-controls" style="margin-top:12px;display:flex;gap:8px;">
+							<button class="btn" id="sim-stop">Detener</button>
+							<button class="btn" id="sim-reset">Reiniciar</button>
+							<div style="margin-left:auto;color:var(--muted);font-size:.9rem" id="sim-status">Estado: inactivo</div>
+						</div>
+					</div>
 
-					<h4 style="margin-bottom:8px;">Checklist antes de subir</h4>
-					<ul style="padding-left:18px;margin-top:0;margin-bottom:12px;line-height:1.35;">
-						<li>Placa y puerto seleccionados en el IDE.</li>
-						<li>Cable USB y alimentación OK.</li>
-						<li>Polaridad del LED y conexiones verificadas.</li>
-					</ul>
-
-					<h4 style="margin-bottom:6px;">Siguiente paso</h4>
-					<p style="margin:0 0 8px 0;">Añadir diagramas de conexión y ejercicios prácticos. Próximamente, el simulador para probar código en la web.</p>
-					<a class="btn" href="proyectos/proyectos.html" style="display:inline-block;margin-top:8px;">Ir a proyectos</a>
+					<!-- contenido info y enlace -->
+					<div style="margin-top:12px;">
+						<h4 style="margin-bottom:8px;">Resumen rápido</h4>
+						<ul style="padding-left:18px;margin-top:0;margin-bottom:10px;line-height:1.35;">
+							<li>Inicia <code>Serial.begin(9600)</code> para depurar.</li>
+							<li>Usa constantes descriptivas: <code>const int LED = 13;</code></li>
+							<li>Evita <code>delay()</code> si necesitas multitarea.</li>
+						</ul>
+						<h4 style="margin-bottom:8px;">Checklist antes de subir</h4>
+						<ul style="padding-left:18px;margin-top:0;margin-bottom:12px;line-height:1.35;">
+							<li>Placa y puerto seleccionados en el IDE.</li>
+							<li>Cable USB y alimentación OK.</li>
+							<li>Polaridad del LED y conexiones verificadas.</li>
+						</ul>
+						<a class="btn" href="proyectos/proyectos.html" style="display:inline-block;margin-top:8px;">Ir a proyectos</a>
+					</div>
 				</aside>
 			</div>
-			<p class="hint" style="margin-top:14px;">Próximos pasos: añadir imágenes de conexión, simulador por proyecto y retos interactivos al final de cada lección.</p>
+		
 		</section>
 
 		<section id="proyectos" class="card">
@@ -136,5 +167,6 @@
 	<!-- scripts externos -->
 	<script src="js/ui.js" defer></script>
 	<script src="js/bg.js" defer></script>
+	<script src="js/simulator.js" defer></script>
 </body>
 </html>
