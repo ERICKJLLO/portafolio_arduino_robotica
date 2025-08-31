@@ -24,85 +24,179 @@
 	<main>
 		<section id="introduccion" class="card">
 			<h2>¿Qué es Arduino?</h2>
-			<p>Arduino es una plataforma de hardware y software abierta para crear proyectos electrónicos. Aquí encontrarás una introducción, guías para instalar el entorno, ejemplos de código y recursos para aprender.</p>
+			<p>Arduino es una plataforma de hardware y software libre que facilita la creación de proyectos electrónicos y de programación. Combina placas sencillas, sensores y actuadores con un entorno de programación accesible; es ideal para aprender haciendo.</p>
+			
+			<h3>Breve historia y aplicaciones</h3>
+			<p>Desde su aparición, Arduino ha sido usado en educación, prototipado y arte interactivo. Ejemplos comunes: sistemas de iluminación controlada, robots sencillos, sensores ambientales y proyectos IoT. En este curso verás ejemplos prácticos que van desde encender un LED hasta leer sensores y comunicarlos por Serial.</p>
+
+			<h3>¿A quién va dirigido?</h3>
+			<ul>
+				<li>Principiantes sin experiencia previa en electrónica o programación.</li>
+				<li>Profesores que quieren material didáctico y prácticas guiadas.</li>
+				<li>Estudiantes y aficionadas/os que desean experimentar rápidamente con hardware.</li>
+			</ul>
+
+			<h3>Requisitos y material</h3>
+			<ul>
+				<li>Ordenador con navegador y conexión a Internet.</li>
+				<li>Opcional: placa Arduino (UNO/Nano) y cable USB para pruebas en hardware real.</li>
+				<li>Componentes básicos por proyecto: LED, resistencias, cables, protoboard; cada proyecto incluye la lista concreta.</li>
+			</ul>
+
+			<h3>Qué aprenderás</h3>
+			<ul>
+				<li>Instalación y uso del IDE de Arduino y del editor en línea.</li>
+				<li>Estructura básica de un programa: <code>setup()</code> y <code>loop()</code>.</li>
+				<li>Lectura y escritura digital/analógica, PWM, y manejo de tiempos (<code>delay</code> vs <code>millis</code>).</li>
+				<li>Depuración con <code>Serial</code> y buenas prácticas de montaje y seguridad.</li>
+				<li>Pruebas en simulador antes de volcar código a la placa física.</li>
+			</ul>
+
+			<h3>Cómo está organizado este material</h3>
+			<p>Habrá una página por proyecto (15 en total planificados). Cada página incluirá:</p>
+			<ul>
+				<li>Descripción y objetivo del proyecto.</li>
+				<li>Lista de materiales y tiempo estimado.</li>
+				<li>Esquema de conexión y fotografías o diagramas.</li>
+				<li>Código explicado paso a paso y ejemplos ejecutables en el simulador.</li>
+				<li>Un reto final o actividad creativa para reforzar lo aprendido.</li>
+			</ul>
+
+			<h3>Uso del simulador integrado</h3>
+			<p>En la columna derecha encontrarás un simulador visual con un LED y una consola "Serial". Al pulsar "Ejecutar" junto a un ejemplo, el simulador mostrará el comportamiento esperado (encender/apagar LED, mensajes Serial). Esto permite experimentar sin placa física y depurar rápidamente.</p>
+
+			<h3>Consejos de aprendizaje</h3>
+			<ul>
+				<li>Comienza por proyectos simples y avanza incrementalmente.</li>
+				<li>Modifica los tiempos y valores del código para ver efectos inmediatos.</li>
+				<li>Usa la consola Serial para entender el flujo del programa.</li>
+				<li>Si trabajas en clase, fomenta que cada estudiante pruebe variantes del reto final.</li>
+			</ul>
+
+			<h3>Seguridad básica</h3>
+			<p>Apaga la alimentación antes de cambiar conexiones, respeta polaridad en LEDs y sensores, y usa resistencias cuando sea necesario. Si trabajas con motores o dispositivos que consumen mucha corriente, utiliza fuentes externas y protección adecuada.</p>
+
 			
 		</section>
 
 		<section id="instalacion" class="card">
 			<h2>Instalación del IDE de Arduino</h2>
+			<p>Pasos y recomendaciones para instalar y preparar el entorno de trabajo, tanto en ordenador como para usar el editor en línea.</p>
+			
+			<h4>1) Elegir el editor</h4>
+			<ul>
+				<li>IDE clásico (descargable): instala desde https://www.arduino.cc/en/software. Permite trabajar offline y gestionar bibliotecas localmente.</li>
+				<li>Arduino Web Editor: funciona en el navegador y guarda el código en la nube; útil si no quieres instalar nada.</li>
+			</ul>
+
+			<h4>2) Notas por sistema operativo</h4>
+			<ul>
+				<li><strong>Windows:</strong> puede pedir controladores (drivers). Muchas placas chinas usan el chip CH340; instala su driver si Windows no reconoce la placa.</li>
+				<li><strong>macOS:</strong> normalmente no requiere drivers para placas oficiales, pero puede pedir permisos de acceso al puerto serie (otorga permiso en Preferencias del Sistema si aparece).</li>
+				<li><strong>Linux:</strong> añade tu usuario al grupo <code>dialout</code> o equivalente para permitir acceso al puerto serie: <code>sudo usermod -a -G dialout $USER</code> (luego reinicia sesión).</li>
+			</ul>
+
+			<h4>3) Conectar y seleccionar la placa</h4>
 			<ol>
-				<li>Visita https://www.arduino.cc y descarga el IDE (o usa el Arduino Web Editor).</li>
-				<li>Instala los drivers si tu placa lo requiere (Windows suele pedirlos la primera vez).</li>
-				<li>Conecta tu placa Arduino por USB, abre el IDE y selecciona la placa y el puerto en el menú Herramientas.</li>
-				<li>Prueba subiendo el ejemplo "Blink" desde Archivo → Ejemplos → 01.Basics → Blink.</li>
+				<li>Conecta la placa por USB.</li>
+				<li>En el IDE: Herramientas → Placa → selecciona la placa (Ej. Arduino Uno).</li>
+				<li>Herramientas → Puerto → elige el puerto COM / /dev/tty que corresponde.</li>
 			</ol>
+
+			<h4>4) Probar con el ejemplo Blink</h4>
+			<p>Abre Archivo → Ejemplos → 01.Basics → Blink y pulsa Subir. Si falla, revisa el puerto, cable y drivers.</p>
+
+			<h4>5) Monitor Serial y depuración</h4>
+			<p>Usa Herramientas → Monitor Serial para ver mensajes con <code>Serial.print()</code>. Ajusta la velocidad (baud) con <code>Serial.begin(9600)</code> en <code>setup()</code>.</p>
+
+			<h4>6) Bibliotecas</h4>
+			<p>Si un proyecto necesita librerías adicionales (Ej. sensores, displays), instálalas desde Herramientas → Administrar bibliotecas. Lee la documentación de cada librería para ejemplos.</p>
+
+			<h4>7) Problemas comunes</h4>
+			<ul>
+				<li>IDE no encuentra el puerto: prueba otro cable USB, otro puerto del PC o reinstala drivers.</li>
+				<li>Error de compilación por librería: instala la versión requerida o revisa el README de la librería.</li>
+				<li>Subida fallida: cierra programas que usan el puerto serie (p. ej. otro monitor) y vuelve a intentarlo.</li>
+			</ul>
+
 			<p class="hint">Vídeo recomendado (instalación):</p>
-			<!-- embed del vídeo indicado por el usuario -->
 			<div style="max-width:720px;margin:0 auto;display:block;">
 				<iframe width="100%" height="405" src="https://www.youtube.com/embed/QAXeJ2w5wlc" title="Instalación Arduino" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
-			<p class="hint">Usa sólo vídeos del canal/playlist indicado para el material de instalación.</p>
 		
 		</section>
-
+ 
 		<section id="programacion" class="card">
-			<h2>Cómo programar: conceptos básicos</h2>
-			<!-- Dos columnas controladas por CSS -->
+			<h2>Cómo programar: conceptos y ejemplos</h2>
 			<div class="program-layout">
 				<div>
-					<p style="margin-top:0;">Explicaciones claras y ejemplos prácticos para comenzar con Arduino sin abrumarte.</p>
+					<p style="margin-top:0;">Aquí ampliamos conceptos clave y ejemplos prácticos para que puedas entender y modificar código con confianza.</p>
 
-					<h3>1. Estructura básica</h3>
-					<p><strong>setup()</strong> → se ejecuta una vez; <strong>loop()</strong> → se repite. Evita bloquear el loop para mantener la respuesta del sistema.</p>
+					<h3>Estructura básica</h3>
+					<p><strong>setup()</strong> — se ejecuta una vez: configurar pines, iniciar <code>Serial</code>. <strong>loop()</strong> — se ejecuta repetidamente: lógica principal del programa.</p>
 
-					<h3>2. Entradas y salidas</h3>
+					<h3>Entradas y salidas</h3>
 					<ul>
-						<li><strong>pinMode(pin, MODE)</strong>: INPUT / INPUT_PULLUP / OUTPUT.</li>
-						<li><strong>digitalRead / digitalWrite</strong>: señales digitales (HIGH/LOW).</li>
+						<li><strong>pinMode(pin, MODE)</strong>: define el modo (INPUT, INPUT_PULLUP, OUTPUT).</li>
+						<li><strong>digitalRead(pin)</strong> / <strong>digitalWrite(pin, value)</strong>: leer y escribir señales digitales (HIGH/LOW).</li>
 						<li><strong>analogRead(pin)</strong>: lectura analógica (0..1023).</li>
-						<li><strong>analogWrite(pin, value)</strong>: PWM (0..255) en pines compatibles.</li>
+						<li><strong>analogWrite(pin, value)</strong>: PWM (0..255) en pines compatibles para simular niveles intermedios.</li>
 					</ul>
 
-					<h3>3. Temporización: delay vs millis</h3>
-					<p><code>delay()</code> detiene todo; <code>millis()</code> permite temporizar sin bloquear y controlar varias tareas.</p>
-
-					<h3>4. Ejemplos prácticos</h3>
-					<p style="margin-bottom:6px;"><strong>Blink (simple)</strong></p>
-					<div class="code-example" data-example="blink-simple">
-						<pre>// void setup() { pinMode(LED_BUILTIN, OUTPUT); }
-	// void loop() { digitalWrite(LED_BUILTIN, HIGH); delay(1000); digitalWrite(LED_BUILTIN, LOW); delay(1000); }</pre>
-						<div class="code-actions">
-							<button class="btn run-btn" data-action="run" data-example="blink-simple">Ejecutar en simulador</button>
-							<button class="btn" data-action="stop" data-example="blink-simple">Detener</button>
-						</div>
+					<h3>Ejemplo: lectura de botón con debounce</h3>
+					<pre>// const int BTN = 2;
+const int LED = 13;
+unsigned long lastChange = 0;
+const unsigned long debounce = 40;
+int state = HIGH;
+void setup(){ pinMode(BTN, INPUT_PULLUP); pinMode(LED, OUTPUT); }
+void loop(){
+  int reading = digitalRead(BTN);
+  if(reading != state && (millis() - lastChange) > debounce){
+    state = reading;
+    lastChange = millis();
+    digitalWrite(LED, state == LOW ? HIGH : LOW); // botón activo a LOW con INPUT_PULLUP
+  }
+}</pre>
+					<div class="code-actions">
+						<button class="btn run-btn" data-action="run" data-example="blink-simple">Ejecutar</button>
+						<button class="btn" data-action="stop" data-example="blink-simple">Detener</button>
+					</div>
+ 
+ 					<h3>Ejemplo: lectura analógica y control PWM</h3>
+ 					<p>Leer un sensor (LDR, potenciómetro) y adaptar brillo del LED.</p>
+					<pre>// const int LDR = A0;
+// const int LED_PWM = 9;
+// void setup(){ pinMode(LED_PWM, OUTPUT); }
+// void loop(){
+//   int val = analogRead(LDR); // 0..1023
+//   int out = map(val, 0, 1023, 0, 255);
+//   analogWrite(LED_PWM, out);
+// }</pre>
+					<div class="code-actions">
+						<button class="btn run-btn" data-action="run" data-example="blink-millis">Ejecutar</button>
+						<button class="btn" data-action="stop" data-example="blink-millis">Detener</button>
 					</div>
 
-					<p style="margin-bottom:6px;"><strong>Blink no bloqueante (millis)</strong></p>
-					<div class="code-example" data-example="blink-millis">
-						<pre>// const int led = LED_BUILTIN;
-	// unsigned long prev = 0;
-	// unsigned long interval = 500;
-	// void setup(){ pinMode(led, OUTPUT); }
-	// void loop(){
-	//   unsigned long now = millis();
-	//   if(now - prev >= interval){
-	//     prev = now;
-	//     digitalWrite(led, !digitalRead(led)); // alterna LED
-	//   }
-	//   // aquí puedes leer sensores o atender botones sin bloquear
-	// }</pre>
-						<div class="code-actions">
-							<button class="btn run-btn" data-action="run" data-example="blink-millis">Ejecutar en simulador</button>
-							<button class="btn" data-action="stop" data-example="blink-millis">Detener</button>
-						</div>
-					</div>
+					<h3>Temporización: delay vs millis</h3>
+					<p><code>delay()</code> detiene el microcontrolador y no permite otras tareas. Con <code>millis()</code> puedes gestionar múltiples temporizadores y mantener la respuesta.</p>
 
-					<h3>5. Lectura de botones y debounce</h3>
-					<p>Usa <code>INPUT_PULLUP</code> para simplificar el cableado y aplica un debounce (10–50 ms) en software para lecturas estables.</p>
+					<h3>Debug con Serial</h3>
+					<p>Usa <code>Serial.begin(9600)</code> en <code>setup()</code> y <code>Serial.println()</code> para imprimir valores y entender el comportamiento en tiempo real.</p>
+					<pre>// void setup(){ Serial.begin(9600); }
+// void loop(){ Serial.println(analogRead(A0)); delay(500); }</pre>
+
+					<h3>Buenas prácticas</h3>
+					<ul>
+						<li>Usa constantes descriptivas para pines.</li>
+						<li>Evita código duplicado y separa en funciones.</li>
+						<li>Prefiere <code>millis()</code> para tareas periódicas y mantén el <code>loop()</code> ligero.</li>
+						<li>Documenta el código con comentarios y pasos de prueba.</li>
+					</ul>
 				</div>
 
 				<aside class="program-sidebar">
-					<!-- simulador grande a la derecha -->
+					<!-- simulador grande a la derecha (sin cambios funcionales) -->
 					<div class="simulator-panel" id="sim-panel" aria-live="polite">
 						<h3 style="margin-top:0;margin-bottom:8px;">Simulador</h3>
 						<div class="simulator-main">

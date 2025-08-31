@@ -1,0 +1,4 @@
+Add intro, install guide and code examples
+
+Recommended command:
+git commit --amend -m "Add intro, install guide and code examples"
