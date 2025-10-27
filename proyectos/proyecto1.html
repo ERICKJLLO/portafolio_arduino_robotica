@@ -4,46 +4,73 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<title>Proyecto 1 - Encender un LED</title>
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="../estilos/styles.css">
 </head>
 <body>
 	<header class="site-header">
-		<h1>Proyecto 1: Encender un LED</h1>
+		<h1>Proyecto 1: Encender y Apagar un LED</h1>
 		<nav>
-			<a href="index.html">Inicio</a>
+			<a href="../index.html">Inicio</a>
 			<a href="proyectos.html">Proyectos</a>
 		</nav>
 	</header>
 
-	<main class="card">
-		<h2>Objetivo</h2>
-		<p>Aprender a encender un LED con Arduino usando digitalWrite y pinMode.</p>
+	<main>
+		<section class="card" style="margin-bottom:22px;">
+			<h2>Materiales necesarios</h2>
+			<ul>
+				<li>Placa Arduino (UNO, Nano, etc.)</li>
+				<li>LED</li>
+				<li>Resistencia 220Ω</li>
+				<li>Cables y protoboard</li>
+			</ul>
+		</section>
 
-		<h3>Materiales</h3>
-		<ul>
-			<li>Placa Arduino (UNO, Nano, etc.)</li>
-			<li>LED</li>
-			<li>Resistencia 220Ω</li>
-			<li>Cables y protoboard</li>
-		</ul>
+		<section class="card" style="margin-bottom:22px;">
+			<h2>Video explicativo</h2>
+			<div style="max-width:720px;margin:0 auto 18px;">
+				<iframe width="100%" height="405" src="https://www.youtube.com/embed/ycXI2E7iArY?si=7Qy9QvQwQ1y4wQwD" title="Encender y apagar un LED con Arduino" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px;border:1px solid var(--card-border);"></iframe>
+			</div>
+		</section>
 
-		<h3>Montaje</h3>
-		<p>Conectar el ánodo del LED (pierna larga) al pin 13 (o el pin que elijas) mediante la resistencia; el cátodo a GND.</p>
+		<section class="card" style="margin-bottom:22px;">
+			<h2>¿Cómo encender y apagar un LED con Arduino?</h2>
+			<p>
+				Para encender y apagar un LED con Arduino, primero conecta el ánodo (pierna larga) del LED a un pin digital de la placa (por ejemplo, el pin 13) a través de una resistencia de 220Ω, y el cátodo (pierna corta) a GND. En el código, debes configurar el pin como salida usando <code>pinMode(13, OUTPUT);</code> en la función <code>setup()</code>. Luego, en la función <code>loop()</code>, puedes encender el LED con <code>digitalWrite(13, HIGH);</code> y apagarlo con <code>digitalWrite(13, LOW);</code>. Puedes alternar entre encendido y apagado usando la función <code>delay()</code> para crear intervalos de tiempo.
+			</p>
+		</section>
+		
+		<section class="card" style="margin-bottom:22px;">
+			<h2>Simulador: ¡Haz tu propio circuito y código!</h2>
+			<p>Realiza el montaje y programa el Arduino para encender y apagar el LED, como se muestra en el video. Usa el simulador interactivo a continuación:</p>
+			<div style="max-width:800px;margin:0 auto 18px;">
+				<iframe src="https://wokwi.com/projects/445999499372601345" width="100%" height="500" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+			<div style="margin: 24px 0; text-align:center;">
+				<button class="btn" id="btn-solucion" type="button">Ver solución</button>
+			</div>
+			<div id="solucion-container" style="display:none;max-width:800px;margin:0 auto 18px;">
+				<h2>Solución en simulador</h2>
+				<iframe src="https://wokwi.com/projects/445999361406204929" width="100%" height="500" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+		</section>
 
-		<h3>Código de ejemplo</h3>
-		<pre>// void setup() { pinMode(13, OUTPUT); }
-// void loop() { digitalWrite(13, HIGH); delay(1000); digitalWrite(13, LOW); delay(1000); }</pre>
-
-		<p class="hint">Próximamente: simulador y área para escribir código desde la página.</p>
-
-		<div style="margin-top:12px;">
-			<a class="btn" href="proyectos.html">Volver a proyectos</a>
-			<a class="btn" href="index.html">Volver al inicio</a>
-		</div>
+		<section class="card" style="text-align:center;">
+			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
+			<a class="btn" href="../index.html">Volver al inicio</a>
+		</section>
 	</main>
 
-	<footer class="site-footer">
-		<p>Plantilla de proyecto · Duplica este archivo para crear los demás proyectos.</p>
-	</footer>
+	<script>
+	// Mostrar/ocultar solución al pulsar el botón
+	document.addEventListener('DOMContentLoaded', function() {
+		const btn = document.getElementById('btn-solucion');
+		const cont = document.getElementById('solucion-container');
+		btn.addEventListener('click', function() {
+			cont.style.display = cont.style.display === 'none' ? 'block' : 'none';
+			btn.textContent = cont.style.display === 'block' ? 'Ocultar solución' : 'Ver solución';
+		});
+	});
+	</script>
 </body>
 </html>
