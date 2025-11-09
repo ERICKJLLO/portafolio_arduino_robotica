@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Proyecto 2 - Contador binario</title>
+	<link rel="stylesheet" href="../estilos/styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<h1>Proyecto 2: Contador binario (4 LEDs)</h1>
+		<nav>
+			<a href="../index.html">Inicio</a>
+			<a href="proyectos.html">Proyectos</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="card">
+			<h2>Materiales</h2>
+			<ul>
+				<li>4 LEDs</li>
+				<li>Protoboard</li>
+				<li>3 resistencias 220Ω (usar una por LED; aquí listadas 3 porque algunos kits comparten, pero recomienda 4 en práctica)</li>
+				<li>Cables de conexión</li>
+				<li>Placa Arduino (UNO, Nano, etc.)</li>
+			</ul>
+		</section>
+
+		<section class="card">
+			<h2>¿Qué son los números binarios?</h2>
+			<p>El sistema binario usa solo dos dígitos: 0 y 1. Cada posición representa una potencia de 2 (1, 2, 4, 8...). Por ejemplo, el número binario 0101 representa 5 (0*8 + 1*4 + 0*2 + 1*1). En electrónica y microcontroladores usamos bits para encender/apagar salidas (LOW/HIGH).</p>
+			<div style="max-width:720px;margin:0 auto 12px;">
+				<iframe width="100%" height="360" src="https://www.youtube.com/embed/6DQk670nm58" title="Qué es el sistema binario" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px;border:1px solid var(--card-border);"></iframe>
+			</div>
+		</section>
+
+		<section class="card">
+			<h2>¿Qué es un contador binario?</h2>
+			<p>Un contador binario incrementa un valor y lo representa con bits. Con 4 LEDs puedes mostrar valores de 0 a 15. Cada LED representa una potencia de 2 (LED0 = 1, LED1 = 2, LED2 = 4, LED3 = 8). Al incrementar el número, encienden/apagan LEDs según los bits.</p>
+			<div style="max-width:720px;margin:0 auto 12px;">
+				<iframe width="100%" height="360" src="https://www.youtube.com/embed/yOEjuyvK62k" title="Contador binario con Arduino" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px;border:1px solid var(--card-border);"></iframe>
+			</div>
+		</section>
+
+
+
+		<section class="card">
+			<h2>Simulador: monta tu contador binario</h2>
+			<p>Construye el circuito y carga el código en el simulador Wokwi a continuación:</p>
+			<div style="max-width:900px;margin:0 auto 12px;">
+				<iframe src="https://wokwi.com/projects/446005761999722497" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+
+			<div style="text-align:center;margin-top:12px;">
+				<button class="btn" id="btn-solucion-2" type="button">Ver solución</button>
+			</div>
+
+			<div id="solucion-container-2" style="display:none;max-width:900px;margin:12px auto 0;">
+				<h3>Solución (simulador)</h3>
+				<iframe src="https://wokwi.com/projects/444634853119600641" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+		</section>
+
+		<section class="card" style="text-align:center;">
+			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
+			<a class="btn" href="../index.html">Volver al inicio</a>
+		</section>
+	</main>
+
+	<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		const btn = document.getElementById('btn-solucion-2');
+		const cont = document.getElementById('solucion-container-2');
+		btn && btn.addEventListener('click', function(){
+			const shown = cont.style.display === 'block';
+			cont.style.display = shown ? 'none' : 'block';
+			btn.textContent = shown ? 'Ver solución' : 'Ocultar solución';
+			// opción: desplazar a la solución cuando se muestra
+			if(!shown) cont.scrollIntoView({behavior:'smooth', block:'center'});
+		});
+	});
+	</script>
+</body>
+</html>
