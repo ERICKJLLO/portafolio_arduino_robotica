@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Proyecto 9 - Ciclo WHILE en Arduino</title>
+	<link rel="stylesheet" href="../estilos/styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<h1>Proyecto 9: Ciclo WHILE en Arduino — Ejemplos</h1>
+		<nav>
+			<a href="../index.html">Inicio</a>
+			<a href="proyectos.html">Proyectos</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="card">
+			<h2>Materiales</h2>
+			<ul>
+				<li>Placa Arduino (UNO, Nano, etc.)</li>
+				<li>Varios LEDs (2–4)</li>
+				<li>Resistencias 220Ω</li>
+				<li>Cables y protoboard</li>
+			</ul>
+		</section>
+
+		<section class="card">
+			<h2>¿Qué hace el ciclo while?</h2>
+			<p>El ciclo <code>while</code> ejecuta repetidamente un bloque de código mientras la condición sea verdadera. Es útil cuando no se sabe de antemano cuántas veces se repetirá la acción (ej.: esperar a que un sensor alcance un valor). Evita bucles infinitos usando condiciones que eventualmente cambien.</p>
+			<p>Ejemplo simple: encender un LED mientras un botón esté presionado.</p>
+			<pre>// const int btn = 2;
+// const int led = 13;
+// void setup(){ pinMode(btn, INPUT_PULLUP); pinMode(led, OUTPUT); }
+// void loop(){
+//   while(digitalRead(btn) == LOW){ // mientras botón presionado
+//     digitalWrite(led, HIGH);
+//   }
+//   digitalWrite(led, LOW);
+//}</pre>
+		</section>
+
+		<section class="card">
+			<h2>Video explicativo</h2>
+			<div style="max-width:720px;margin:0 auto 18px;">
+				<iframe width="100%" height="405" src="https://www.youtube.com/embed/U-xSOzldo6s" title="Ciclo WHILE Arduino" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px;border:1px solid var(--card-border);"></iframe>
+			</div>
+		</section>
+
+		<section class="card">
+			<h2>Simulador: prueba ejemplos WHILE</h2>
+			<p>Abre el simulador Wokwi, carga el circuito y prueba variantes con <code>while</code>.</p>
+			<div style="max-width:900px;margin:0 auto 12px;">
+				<iframe src="https://wokwi.com/projects/447166387130569729" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+
+			<div style="text-align:center;margin-top:12px;">
+				<button class="btn" id="btn-solucion-9" type="button">Ver solución</button>
+			</div>
+
+			<div id="solucion-container-9" style="display:none;max-width:900px;margin:12px auto 0;">
+				<h3>Solución (simulador)</h3>
+				<iframe src="https://wokwi.com/projects/447166091868324865" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+		</section>
+
+		<section class="card" style="text-align:center;">
+			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
+			<a class="btn" href="../index.html">Volver al inicio</a>
+		</section>
+	</main>
+
+	<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		const btn = document.getElementById('btn-solucion-9');
+		const cont = document.getElementById('solucion-container-9');
+		btn && btn.addEventListener('click', function(){
+			const shown = cont.style.display === 'block';
+			cont.style.display = shown ? 'none' : 'block';
+			btn.textContent = shown ? 'Ver solución' : 'Ocultar solución';
+			if(!shown) cont.scrollIntoView({behavior:'smooth', block:'center'});
+		});
+	});
+	</script>
+</body>
+</html>
