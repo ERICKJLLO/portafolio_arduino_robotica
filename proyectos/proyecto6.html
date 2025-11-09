@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Proyecto 6 - IF en Arduino</title>
+	<link rel="stylesheet" href="../estilos/styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<h1>Proyecto 6: Uso de IF en Arduino</h1>
+		<nav>
+			<a href="../index.html">Inicio</a>
+			<a href="proyectos.html">Proyectos</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="card">
+			<h2>Materiales</h2>
+			<ul>
+				<li>Placa Arduino (UNO, Nano, etc.)</li>
+				<li>Potenciómetro (opcional, para entrada analógica)</li>
+				<li>LED</li>
+				<li>Resistencia 220Ω</li>
+				<li>Cables y protoboard</li>
+			
+			</ul>
+		</section>
+
+		<section class="card">
+			<h2>¿Qué significa "if" en Arduino?</h2>
+			<p>
+				La instrucción <code>if</code> permite tomar decisiones en el programa: si una condición es verdadera ejecuta un bloque; si no, puede usar <code>else</code> o <code>else if</code> para otras condiciones.
+				En Arduino se usa para reaccionar a lecturas (sensores, botones) y controlar salidas (LEDs, relés) según criterios.
+			</p>
+			<p>Ejemplo de uso típico: leer un valor analógico y encender un LED si supera un umbral.</p>
+			<pre>// const int pot = A0;
+// const int led = 13;
+// const int umbral = 600;
+// void setup(){ pinMode(led, OUTPUT); Serial.begin(9600); }
+// void loop(){
+//   int v = analogRead(pot);
+//   Serial.println(v);
+//   if(v > umbral){
+//     digitalWrite(led, HIGH); // condición verdadera
+//   } else {
+//     digitalWrite(led, LOW);  // condición falsa
+//   }
+//   delay(150);
+// }</pre>
+		</section>
+
+		<section class="card">
+			<h2>Video explicativo</h2>
+			<div style="max-width:720px;margin:0 auto 18px;">
+				<iframe width="100%" height="405" src="https://www.youtube.com/embed/_7OkRiwL01U" title="IF Arduino" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px;border:1px solid var(--card-border);"></iframe>
+			</div>
+		</section>
+
+		<section class="card">
+			<h2>Práctica en simulador</h2>
+			<p>Montar el circuito y probar la lógica IF en el simulador Wokwi:</p>
+			<div style="max-width:900px;margin:0 auto 12px;">
+				<iframe src="https://wokwi.com/projects/447164431904169985" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+
+			<div style="text-align:center;margin-top:12px;">
+				<button class="btn" id="btn-solucion-6" type="button">Ver solución</button>
+			</div>
+
+			<div id="solucion-container-6" style="display:none;max-width:900px;margin:12px auto 0;">
+				<h3>Solución (simulador)</h3>
+				<iframe src="https://wokwi.com/projects/447164110137050113" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+		</section>
+
+		<section class="card" style="text-align:center;">
+			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
+			<a class="btn" href="../index.html">Volver al inicio</a>
+		</section>
+	</main>
+
+	<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		const btn = document.getElementById('btn-solucion-6');
+		const cont = document.getElementById('solucion-container-6');
+		btn && btn.addEventListener('click', function(){
+			const shown = cont.style.display === 'block';
+			cont.style.display = shown ? 'none' : 'block';
+			btn.textContent = shown ? 'Ver solución' : 'Ocultar solución';
+			if(!shown) cont.scrollIntoView({behavior:'smooth', block:'center'});
+		});
+	});
+	</script>
+</body>
+</html>
