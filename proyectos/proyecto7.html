@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Proyecto 7 - Potenciómetro: Controlar un LED</title>
+	<link rel="stylesheet" href="../estilos/styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<h1>Proyecto 7: Usar un potenciómetro para controlar un LED</h1>
+		<nav>
+			<a href="../index.html">Inicio</a>
+			<a href="proyectos.html">Proyectos</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="card">
+			<h2>Materiales</h2>
+			<ul>
+				<li>Placa Arduino (UNO, Nano, etc.)</li>
+				<li>Potenciómetro (10k recomendado)</li>
+				<li>LED</li>
+				<li>Resistencia 220Ω</li>
+				<li>Cables y protoboard</li>
+				<li>Cable USB</li>
+			</ul>
+		</section>
+
+		<section class="card">
+			<h2>Descripción</h2>
+			<p>Conecta el potenciómetro entre 5V y GND y el cursor al pin analógico (por ejemplo A0). Lee el valor con <code>analogRead()</code> (0–1023), conviértelo a 0–255 con <code>map()</code> y pásalo a <code>analogWrite()</code> en un pin PWM para controlar el brillo del LED.</p>
+		</section>
+
+		<section class="card">
+			<h2>Video explicativo</h2>
+			<div style="max-width:720px;margin:0 auto 18px;">
+				<iframe width="100%" height="405" src="https://www.youtube.com/embed/53a3CDrCYfM" title="Potenciómetro - control LED" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px;border:1px solid var(--card-border);"></iframe>
+			</div>
+		</section>
+
+		<section class="card">
+			<h2>Ejemplo de código</h2>
+			<pre>// const int potPin = A0;
+// const int ledPin = 9; // PWM pin
+// void setup(){ pinMode(ledPin, OUTPUT); }
+// void loop(){
+//   int val = analogRead(potPin);         // 0..1023
+//   int out = map(val, 0, 1023, 0, 255);  // 0..255
+//   analogWrite(ledPin, out);             // controla brillo
+//   delay(20);
+// }</pre>
+		</section>
+
+		<section class="card">
+			<h2>Simulador: monta y prueba</h2>
+			<p>Abre el simulador Wokwi y construye el circuito para controlar el LED con el potenciómetro:</p>
+			<div style="max-width:900px;margin:0 auto 12px;">
+				<iframe src="https://wokwi.com/projects/447165073811000321" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+
+			<div style="text-align:center;margin-top:12px;">
+				<button class="btn" id="btn-solucion-7" type="button">Ver solución</button>
+			</div>
+
+			<div id="solucion-container-7" style="display:none;max-width:900px;margin:12px auto 0;">
+				<h3>Solución (simulador)</h3>
+				<iframe src="https://wokwi.com/projects/447164913473230849" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+		</section>
+
+		<section class="card" style="text-align:center;">
+			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
+			<a class="btn" href="../index.html">Volver al inicio</a>
+		</section>
+	</main>
+
+	<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		const btn = document.getElementById('btn-solucion-7');
+		const cont = document.getElementById('solucion-container-7');
+		btn && btn.addEventListener('click', function(){
+			const shown = cont.style.display === 'block';
+			cont.style.display = shown ? 'none' : 'block';
+			btn.textContent = shown ? 'Ver solución' : 'Ocultar solución';
+			if(!shown) cont.scrollIntoView({behavior:'smooth', block:'center'});
+		});
+	});
+	</script>
+</body>
+</html>
