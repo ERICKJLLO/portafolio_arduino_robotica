@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Proyecto 8 - Ciclo FOR: Secuencia de LEDs</title>
+	<link rel="stylesheet" href="../estilos/styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<h1>Proyecto 8: Ciclo FOR en Arduino — Secuencia de LEDs</h1>
+		<nav>
+			<a href="../index.html">Inicio</a>
+			<a href="proyectos.html">Proyectos</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="card">
+			<h2>Materiales</h2>
+			<ul>
+				<li>Placa Arduino (UNO, Nano, etc.)</li>
+				<li>Varios LEDs (ej. 4–6)</li>
+				<li>Resistencias 220Ω (una por LED)</li>
+				<li>Cables y protoboard</li>
+			</ul>
+		</section>
+
+		<section class="card">
+			<h2>¿Qué hace el ciclo for?</h2>
+			<p>El ciclo <code>for</code> repite un bloque de código muchas veces cambiando una variable de control. Es útil para recorrer arrays o pines y crear secuencias. Por ejemplo, con varios LEDs puedes encender uno tras otro usando un <code>for</code> para indexar los pines.</p>
+			<p>Ejemplo de código (secuencia simple):</p>
+			<pre>// const int leds[] = {8,9,10,11,12,13};
+// void setup(){ for(int i=0;i<6;i++) pinMode(leds[i], OUTPUT); }
+// void loop(){
+//   for(int i=0;i<6;i++){
+//     digitalWrite(leds[i], HIGH);
+//     delay(120);
+//     digitalWrite(leds[i], LOW);
+//   }
+//}</pre>
+		</section>
+
+		<section class="card">
+			<h2>Video explicativo</h2>
+			<div style="max-width:720px;margin:0 auto 18px;">
+				<iframe width="100%" height="405" src="https://www.youtube.com/embed/HgbCAUkthQE" title="Ciclo FOR Arduino" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px;border:1px solid var(--card-border);"></iframe>
+			</div>
+		</section>
+
+		<section class="card">
+			<h2>Simulador: monta la secuencia</h2>
+			<p>Construye el circuito y carga el código en el simulador Wokwi para ver la secuencia de LEDs.</p>
+			<div style="max-width:900px;margin:0 auto 12px;">
+				<iframe src="https://wokwi.com/projects/447165818802324481" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+
+			<div style="text-align:center;margin-top:12px;">
+				<button class="btn" id="btn-solucion-8" type="button">Ver solución</button>
+			</div>
+
+			<div id="solucion-container-8" style="display:none;max-width:900px;margin:12px auto 0;">
+				<h3>Solución (simulador)</h3>
+				<iframe src="https://wokwi.com/projects/447165529342884865" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+		</section>
+
+		<section class="card" style="text-align:center;">
+			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
+			<a class="btn" href="../index.html">Volver al inicio</a>
+		</section>
+	</main>
+
+	<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		const btn = document.getElementById('btn-solucion-8');
+		const cont = document.getElementById('solucion-container-8');
+		btn && btn.addEventListener('click', function(){
+			const shown = cont.style.display === 'block';
+			cont.style.display = shown ? 'none' : 'block';
+			btn.textContent = shown ? 'Ver solución' : 'Ocultar solución';
+			if(!shown) cont.scrollIntoView({behavior:'smooth', block:'center'});
+		});
+	});
+	</script>
+</body>
+</html>
