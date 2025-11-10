@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Proyecto 10 - Leer valores desde el Monitor Serial</title>
+	<link rel="stylesheet" href="../estilos/styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<h1>Proyecto 10: Leer valores desde el Monitor Serial</h1>
+		<nav>
+			<a href="../index.html">Inicio</a>
+			<a href="proyectos.html">Proyectos</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="card">
+			<h2>Materiales</h2>
+			<ul>
+				<li>Placa Arduino (UNO, Nano, etc.)</li>
+				<li>Cable USB</li>
+				<li>LED (opcional para pruebas)</li>
+				<li>Resistencia 220Ω (si usa LED)</li>
+				<li>Cables y protoboard</li>
+			</ul>
+		</section>
+
+		<section class="card">
+			<h2>¿Qué significa leer desde el Monitor Serial?</h2>
+			<p>El Monitor Serial permite enviar caracteres desde el ordenador hacia la placa. En el código se usa <code>Serial.available()</code> para comprobar si hay datos y <code>Serial.read()</code> o <code>Serial.readString()</code> para leerlos. Con esto puedes recibir comandos, números o texto y reaccionar (ej.: encender/apagar un LED o ajustar parámetros).</p>
+			<p>Ejemplo simple: si llega la letra '1' enciende un LED, si llega '0' lo apaga.</p>
+			<pre>// const int led = 13;
+// void setup(){ pinMode(led, OUTPUT); Serial.begin(9600); }
+// void loop(){
+//   if(Serial.available()){
+//     char c = Serial.read();
+//     if(c == '1') digitalWrite(led, HIGH);
+//     else if(c == '0') digitalWrite(led, LOW);
+//   }
+//}</pre>
+		</section>
+
+		<section class="card">
+			<h2>Video explicativo</h2>
+			<div style="max-width:720px;margin:0 auto 18px;">
+				<iframe width="100%" height="405" src="https://www.youtube.com/embed/9EGDFF_f4EA" title="Leer valores Monitor Serial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px;border:1px solid var(--card-border);"></iframe>
+			</div>
+		</section>
+
+		<section class="card">
+			<h2>Práctica en simulador</h2>
+			<p>Abre el simulador Wokwi, ejecuta el sketch y usa la consola serial para enviar comandos y ver la respuesta de la placa.</p>
+			<div style="max-width:900px;margin:0 auto 12px;">
+				<iframe src="https://wokwi.com/projects/447202656292934657" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+
+			<div style="text-align:center;margin-top:12px;">
+				<button class="btn" id="btn-solucion-10" type="button">Ver solución</button>
+			</div>
+
+			<div id="solucion-container-10" style="display:none;max-width:900px;margin:12px auto 0;">
+				<h3>Solución (simulador)</h3>
+				<iframe src="https://wokwi.com/projects/447171071149478913" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+		</section>
+
+		<section class="card" style="text-align:center;">
+			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
+			<a class="btn" href="../index.html">Volver al inicio</a>
+		</section>
+	</main>
+
+	<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		const btn = document.getElementById('btn-solucion-10');
+		const cont = document.getElementById('solucion-container-10');
+		btn && btn.addEventListener('click', function(){
+			const shown = cont.style.display === 'block';
+			cont.style.display = shown ? 'none' : 'block';
+			btn.textContent = shown ? 'Ver solución' : 'Ocultar solución';
+			if(!shown) cont.scrollIntoView({behavior:'smooth', block:'center'});
+		});
+	});
+	</script>
+</body>
+</html>
