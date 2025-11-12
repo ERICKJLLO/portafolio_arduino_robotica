@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Proyecto 14 - Botón INTERRUPTOR (Toggle Button)</title>
+	<link rel="stylesheet" href="../estilos/styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<h1>Proyecto 14: Botón INTERRUPTOR (Toggle Button)</h1>
+		<nav>
+			<a href="../index.html">Inicio</a>
+			<a href="proyectos.html">Proyectos</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="card">
+			<h2>Materiales</h2>
+			<ul>
+				<li>Placa Arduino (UNO, Nano, etc.)</li>
+				<li>Botón pulsador</li>
+				<li>LED</li>
+				<li>Resistencia 220Ω</li>
+				<li>Pull-down o usar INPUT_PULLUP</li>
+				<li>Cables y protoboard</li>
+			</ul>
+		</section>
+
+		<section class="card">
+			<h2>Descripción</h2>
+			<p>Un "interruptor" con botón alterna el estado (ON/OFF) cada vez que se pulsa. En vez de leer el botón y mantener el estado solo mientras se presiona, guardamos una variable que cambia su valor en cada flanco (debounce recomendado).</p>
+		</section>
+
+		<section class="card">
+			<h2>Video explicativo</h2>
+			<div style="max-width:720px;margin:0 auto 18px;">
+				<iframe src="https://www.youtube.com/embed/tgWNMA28wXw" title="Botón Interruptor" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;aspect-ratio:16/9;border-radius:10px;border:1px solid var(--card-border);"></iframe>
+			</div>
+		</section>
+
+		<section class="card">
+			<h2>Simulador: prueba el botón interruptor</h2>
+			<p>En el simulador monta el botón y comprueba que cada pulsación cambie el estado del LED (toggle).</p>
+			<div style="max-width:900px;margin:0 auto 12px;">
+				<iframe src="https://wokwi.com/projects/447455894162923521" width="100%" style="aspect-ratio:16/9;border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+
+			<div style="text-align:center;margin-top:12px;">
+				<button class="btn" id="btn-solucion-14" type="button">Ver solución</button>
+			</div>
+
+			<div id="solucion-container-14" style="display:none;max-width:900px;margin:12px auto 0;">
+				<h3>Solución (simulador)</h3>
+				<iframe src="https://wokwi.com/projects/447454665472919553" width="100%" style="aspect-ratio:16/9;border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+		</section>
+
+		<section class="card">
+			<h2>Ejemplo de código (toggle con debounce)</h2>
+			<pre>// const int btnPin = 2;
+// const int ledPin = 13;
+// bool state = false;
+// unsigned long lastMillis = 0;
+// const unsigned long debounce = 50;
+// void setup(){ pinMode(btnPin, INPUT_PULLUP); pinMode(ledPin, OUTPUT); digitalWrite(ledPin, LOW); }
+// void loop(){
+//   static int lastBtn = HIGH;
+//   int reading = digitalRead(btnPin);
+//   if(reading != lastBtn && (millis() - lastMillis) > debounce){
+//     lastMillis = millis();
+//     if(reading == LOW){ // botón presionado (con INPUT_PULLUP)
+//       state = !state; // alternar
+//       digitalWrite(ledPin, state ? HIGH : LOW);
+//     }
+//   }
+//   lastBtn = reading;
+// }</pre>
+			<p>Explicación: usamos INPUT_PULLUP y detectamos el flanco de pulsación (cuando reading == LOW). Con debounce evitamos rebotes que causarían múltiples alternancias.</p>
+		</section>
+
+		<section class="card">
+			<div class="project-footer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+				<a class="btn" href="proyecto13.html" style="min-width:120px;">← Anterior</a>
+				<div style="display:flex;gap:8px;justify-content:center;">
+					<a class="btn" href="proyectos.html">Volver a proyectos</a>
+					<a class="btn" href="../index.html">Volver al inicio</a>
+				</div>
+				<a class="btn" href="proyecto15.html" style="min-width:120px;">Siguiente →</a>
+			</div>
+		</section>
+	</main>
+
+	<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		const btn = document.getElementById('btn-solucion-14');
+		const cont = document.getElementById('solucion-container-14');
+		btn && btn.addEventListener('click', function(){
+			const shown = cont.style.display === 'block';
+			cont.style.display = shown ? 'none' : 'block';
+			btn.textContent = shown ? 'Ver solución' : 'Ocultar solución';
+			if(!shown) cont.scrollIntoView({behavior:'smooth', block:'center'});
+		});
+	});
+	</script>
+
+	<script src="../js/project-nav.js" defer></script>
+</body>
+</html>
