@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Proyecto 11 - LED RGB (Cátodo Común)</title>
+	<link rel="stylesheet" href="../estilos/styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<h1>Proyecto 11: LED RGB (Cátodo Común)</h1>
+		<nav>
+			<a href="../index.html">Inicio</a>
+			<a href="proyectos.html">Proyectos</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="card">
+			<h2>Materiales</h2>
+			<ul>
+				<li>Placa Arduino (UNO, Nano, etc.)</li>
+				<li>LED RGB cátodo común</li>
+				<li>3 resistencias 220Ω (una por canal)</li>
+				<li>Cables y protoboard</li>
+				<li>Cable USB</li>
+			</ul>
+		</section>
+
+		<section class="card">
+			<h2>¿Qué es un LED RGB de cátodo común?</h2>
+			<p>Un LED RGB cátodo común tiene el cátodo (masa) compartido y tres ánodos separados para rojo, verde y azul. Conectando el cátodo a GND y cada ánodo a un pin PWM del Arduino (mediante resistencias) puedes variar la intensidad de cada color con <code>analogWrite()</code> y mezclar colores.</p>
+			<p>Ejemplo básico: usar pines PWM 9(R),10(G),11(B) y modificar valores 0–255 para obtener distintas mezclas.</p>
+			<pre>// const int r = 9, g = 10, b = 11;
+// void setup(){ pinMode(r, OUTPUT); pinMode(g, OUTPUT); pinMode(b, OUTPUT); }
+// void loop(){
+//   analogWrite(r, 255); analogWrite(g, 0); analogWrite(b, 0); // rojo
+//   delay(800);
+//   analogWrite(r, 0); analogWrite(g, 255); analogWrite(b, 0); // verde
+//   delay(800);
+//   analogWrite(r, 0); analogWrite(g, 0); analogWrite(b, 255); // azul
+//   delay(800);
+// }</pre>
+		</section>
+
+		<section class="card">
+			<h2>Video explicativo</h2>
+			<div style="max-width:720px;margin:0 auto 18px;">
+				<iframe width="100%" height="405" src="https://www.youtube.com/embed/TINPALjszm8" title="LED RGB Arduino" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px;border:1px solid var(--card-border);"></iframe>
+			</div>
+		</section>
+
+		<section class="card">
+			<h2>Simulador: monta y prueba el LED RGB</h2>
+			<p>Abre el simulador Wokwi, conecta el LED RGB cátodo común y prueba variando los valores PWM.</p>
+			<div style="max-width:900px;margin:0 auto 12px;">
+				<iframe src="https://wokwi.com/projects/447440091448624129" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+
+			<div style="text-align:center;margin-top:12px;">
+				<button class="btn" id="btn-solucion-11" type="button">Ver solución</button>
+			</div>
+
+			<div id="solucion-container-11" style="display:none;max-width:900px;margin:12px auto 0;">
+				<h3>Solución (simulador)</h3>
+				<iframe src="https://wokwi.com/projects/447434866051629057" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+		</section>
+
+		<section class="card" style="text-align:center;">
+			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
+			<a class="btn" href="../index.html">Volver al inicio</a>
+		</section>
+	</main>
+
+	<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		const btn = document.getElementById('btn-solucion-11');
+		const cont = document.getElementById('solucion-container-11');
+		btn && btn.addEventListener('click', function(){
+			const shown = cont.style.display === 'block';
+			cont.style.display = shown ? 'none' : 'block';
+			btn.textContent = shown ? 'Ver solución' : 'Ocultar solución';
+			if(!shown) cont.scrollIntoView({behavior:'smooth', block:'center'});
+		});
+	});
+	</script>
+</body>
+</html>
