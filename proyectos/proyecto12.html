@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Proyecto 12 - Cómo crear COLORES con luces LED RGB</title>
+	<link rel="stylesheet" href="../estilos/styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<h1>Proyecto 12: Cómo crear COLORES con luces LED RGB</h1>
+		<nav>
+			<a href="../index.html">Inicio</a>
+			<a href="proyectos.html">Proyectos</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="card">
+			<h2>Materiales</h2>
+			<ul>
+				<li>Placa Arduino (UNO, Nano, etc.)</li>
+				<li>LED RGB (cátodo común o ánodo común según tu componente)</li>
+				<li>3 resistencias 220Ω (una por canal)</li>
+				<li>Cables y protoboard</li>
+				<li>Cable USB</li>
+			</ul>
+		</section>
+
+		<section class="card">
+			<h2>Descripción</h2>
+			<p>Combinando distintas intensidades en los canales R, G y B se obtienen colores variados. Ajusta valores 0–255 con <code>analogWrite()</code> en los pines PWM para mezclar colores. Ejemplos: rojo puro (255,0,0), amarillo (255,255,0), blanco (255,255,255), morado (128,0,128).</p>
+		</section>
+
+		<section class="card">
+			<h2>Video explicativo</h2>
+			<div style="max-width:720px;margin:0 auto 18px;">
+				<iframe width="100%" height="405" src="https://www.youtube.com/embed/4DgSj025Q4E" title="Cómo crear colores con LED RGB" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px;border:1px solid var(--card-border);"></iframe>
+			</div>
+		</section>
+
+		<section class="card">
+			<h2>Simulador: prueba mezclas de color</h2>
+			<p>Usa el simulador para ajustar valores PWM y ver los colores en tiempo real.</p>
+			<div style="max-width:900px;margin:0 auto 12px;">
+			
+				<iframe src="https://wokwi.com/projects/447440751389953025" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+
+			<div style="text-align:center;margin-top:12px;">
+				<button class="btn" id="btn-solucion-12" type="button">Ver solución</button>
+			</div>
+
+			<div id="solucion-container-12" style="display:none;max-width:900px;margin:12px auto 0;">
+				<h3>Solución (simulador)</h3>
+				
+				<iframe src="https://wokwi.com/projects/447440574144929793" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+		</section>
+
+		<section class="card" style="text-align:center;">
+			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
+			<a class="btn" href="../index.html">Volver al inicio</a>
+		</section>
+	</main>
+
+	<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		const btn = document.getElementById('btn-solucion-12');
+		const cont = document.getElementById('solucion-container-12');
+		btn && btn.addEventListener('click', function(){
+			const shown = cont.style.display === 'block';
+			cont.style.display = shown ? 'none' : 'block';
+			btn.textContent = shown ? 'Ver solución' : 'Ocultar solución';
+			if(!shown) cont.scrollIntoView({behavior:'smooth', block:'center'});
+		});
+	});
+	</script>
+</body>
+</html>
