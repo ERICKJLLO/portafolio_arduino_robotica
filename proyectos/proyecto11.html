@@ -21,43 +21,33 @@
 			<ul>
 				<li>Placa Arduino (UNO, Nano, etc.)</li>
 				<li>LED RGB cátodo común</li>
-				<li>3 resistencias 220Ω (una por canal)</li>
+				<li>3 resistencias de 220Ω (una por canal)</li>
 				<li>Cables y protoboard</li>
 				<li>Cable USB</li>
 			</ul>
 		</section>
 
 		<section class="card">
-			<h2>¿Qué es un LED RGB de cátodo común?</h2>
-			<p>Un LED RGB cátodo común tiene el cátodo (masa) compartido y tres ánodos separados para rojo, verde y azul. Conectando el cátodo a GND y cada ánodo a un pin PWM del Arduino (mediante resistencias) puedes variar la intensidad de cada color con <code>analogWrite()</code> y mezclar colores.</p>
-			<p>Ejemplo básico: usar pines PWM 9(R),10(G),11(B) y modificar valores 0–255 para obtener distintas mezclas.</p>
-			<pre>// const int r = 9, g = 10, b = 11;
-// void setup(){ pinMode(r, OUTPUT); pinMode(g, OUTPUT); pinMode(b, OUTPUT); }
-// void loop(){
-//   analogWrite(r, 255); analogWrite(g, 0); analogWrite(b, 0); // rojo
-//   delay(800);
-//   analogWrite(r, 0); analogWrite(g, 255); analogWrite(b, 0); // verde
-//   delay(800);
-//   analogWrite(r, 0); analogWrite(g, 0); analogWrite(b, 255); // azul
-//   delay(800);
-// }</pre>
-		</section>
-
-		<section class="card">
-			<h2>Paso a paso</h2>
-			<ol>
-				<li>Conecta el cátodo común a GND.</li>
-				<li>Conecta los tres ánodos (R,G,B) a pines PWM mediante resistencias 220Ω.</li>
-				<li>En <code>setup()</code> configura los pines como <code>OUTPUT</code>.</li>
-				<li>Usa <code>analogWrite(r,g,b)</code> para variar cada canal 0–255 y mezclar colores.</li>
-				<li>Prueba paletas básicas (rojo, verde, azul, amarillo, blanco) en el simulador.</li>
-			</ol>
+			<h2>Descripción</h2>
+			<p>Un LED RGB de cátodo común comparte su terminal negativo (GND) y tiene tres terminales positivos (R, G, B). Al controlar cada color mediante señales PWM desde el Arduino, se pueden mezclar intensidades para formar distintos colores.</p>
+			<p>En este proyecto, se muestra cómo encender los colores básicos (rojo, verde, azul) secuencialmente usando <code>analogWrite()</code> en los pines PWM.</p>
 		</section>
 
 		<section class="card">
 			<h2>Video explicativo</h2>
 			<div style="max-width:720px;margin:0 auto 18px;">
-				<iframe width="100%" height="405" src
+				<iframe width="100%" height="405" src="https://www.youtube.com/embed/TINPALjszm8" title="Proyecto 11 - LED RGB (Cátodo Común)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px;border:1px solid var(--card-border);"></iframe>
+			</div>
+		</section>
+
+		<section class="card">
+			<h2>Simulador: prueba el LED RGB</h2>
+			<p>Usa el siguiente simulador en Wokwi para observar cómo se comporta el LED RGB al cambiar los valores PWM en cada canal.</p>
+			<div style="max-width:900px;margin:0 auto 12px;">
+				<iframe src="https://wokwi.com/projects/447440091448624129" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+
+			<div style="text-align:center;margin-top:12px;">
 				<button class="btn" id="btn-solucion-11" type="button">Ver solución</button>
 			</div>
 
@@ -65,6 +55,17 @@
 				<h3>Solución (simulador)</h3>
 				<iframe src="https://wokwi.com/projects/447434866051629057" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
 			</div>
+		</section>
+
+		<section class="card">
+			<h2>Paso a paso</h2>
+			<ol>
+				<li>Conecta el cátodo común del LED a GND.</li>
+				<li>Conecta los tres ánodos (R, G, B) a pines PWM del Arduino mediante resistencias de 220Ω.</li>
+				<li>En el código, declara los pines y configúralos como <code>OUTPUT</code>.</li>
+				<li>Usa <code>analogWrite()</code> para variar la intensidad de cada color (valores 0–255).</li>
+				<li>Combina los tres canales para obtener diferentes tonos.</li>
+			</ol>
 		</section>
 
 		<section class="card">
@@ -91,5 +92,7 @@
 		});
 	});
 	</script>
+
+	<script src="../js/project-nav.js" defer></script>
 </body>
 </html>
