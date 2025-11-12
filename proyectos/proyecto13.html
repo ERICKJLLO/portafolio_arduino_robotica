@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Proyecto 13 - Zumbador activo (Buzzer)</title>
+	<link rel="stylesheet" href="../estilos/styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<h1>Proyecto 13: Conectar un zumbador activo</h1>
+		<nav>
+			<a href="../index.html">Inicio</a>
+			<a href="proyectos.html">Proyectos</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="card">
+			<h2>Materiales</h2>
+			<ul>
+				<li>Placa Arduino (UNO, Nano, etc.)</li>
+				<li>Zumbador activo (buzzer)</li>
+				<li>Resistencia 220Ω (opcional según buzzer)</li>
+				<li>Cables y protoboard</li>
+				<li>Cable USB</li>
+			</ul>
+		</section>
+
+		<section class="card">
+			<h2>Descripción</h2>
+			<p>Un zumbador activo incorpora un oscilador interno: basta con aplicarle HIGH o LOW desde un pin digital para que suene. Para tonos más controlados se usan zumbadores pasivos con <code>tone()</code>, pero aquí mostramos cómo conectar y activar un zumbador activo desde un pin digital simple.</p>
+			<pre>// const int buzzer = 8;
+// void setup(){ pinMode(buzzer, OUTPUT); }
+// void loop(){
+//   digitalWrite(buzzer, HIGH); // suena
+//   delay(300);
+//   digitalWrite(buzzer, LOW);  // silencio
+//   delay(300);
+// }</pre>
+		</section>
+
+		<section class="card">
+			<h2>Video explicativo</h2>
+			<div style="max-width:720px;margin:0 auto 18px;">
+				<iframe width="100%" height="405" src="https://www.youtube.com/embed/MJ-YsJSiA-U" title="Zumbador activo Arduino" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px;border:1px solid var(--card-border);"></iframe>
+			</div>
+		</section>
+
+		<section class="card">
+			<h2>Simulador: prueba tu montaje</h2>
+			<p>Usa el simulador Wokwi para conectar el zumbador y probar el sketch.</p>
+			<div style="max-width:900px;margin:0 auto 12px;">
+				<iframe src="https://wokwi.com/projects/447441702388747265" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+
+			<div style="text-align:center;margin-top:12px;">
+				<button class="btn" id="btn-solucion-13" type="button">Ver solución</button>
+			</div>
+
+			<div id="solucion-container-13" style="display:none;max-width:900px;margin:12px auto 0;">
+				<h3>Solución (simulador)</h3>
+				<!-- según indicación la prueba y la solución usan la misma URL -->
+				<iframe src="https://wokwi.com/projects/447441684515768321" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
+			</div>
+		</section>
+
+		<section class="card" style="text-align:center;">
+			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
+			<a class="btn" href="../index.html">Volver al inicio</a>
+		</section>
+	</main>
+
+	<script>
+	document.addEventListener('DOMContentLoaded', function(){
+		const btn = document.getElementById('btn-solucion-13');
+		const cont = document.getElementById('solucion-container-13');
+		btn && btn.addEventListener('click', function(){
+			const shown = cont.style.display === 'block';
+			cont.style.display = shown ? 'none' : 'block';
+			btn.textContent = shown ? 'Ver solución' : 'Ocultar solución';
+			if(!shown) cont.scrollIntoView({behavior:'smooth', block:'center'});
+		});
+	});
+	</script>
+</body>
+</html>
