@@ -56,9 +56,26 @@
 			</div>
 		</section>
 
-		<section class="card" style="text-align:center;">
-			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
-			<a class="btn" href="../index.html">Volver al inicio</a>
+		<section class="card">
+			<h2>Paso a paso</h2>
+			<ol>
+				<li>Conecta la placa por USB y abre el Monitor Serial en el IDE.</li>
+				<li>En <code>setup()</code> llama <code>Serial.begin(9600);</code>.</li>
+				<li>Usa <code>Serial.print()</code> o <code>Serial.println()</code> para enviar mensajes o valores desde el <code>loop()</code>.</li>
+				<li>Para leer datos desde el ordenador usa <code>if(Serial.available()){ char c = Serial.read(); }</code>.</li>
+				<li>Prueba enviar comandos desde el monitor y haz que el sketch reaccione (encender un LED, cambiar un parámetro).</li>
+			</ol>
+		</section>
+
+		<section class="card">
+			<div class="project-footer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+				<a class="btn" href="proyecto3.html" style="min-width:120px;">← Anterior</a>
+				<div style="display:flex;gap:8px;justify-content:center;">
+					<a class="btn" href="proyectos.html">Volver a proyectos</a>
+					<a class="btn" href="../index.html">Volver al inicio</a>
+				</div>
+				<a class="btn" href="proyecto5.html" style="min-width:120px;">Siguiente →</a>
+			</div>
 		</section>
 	</main>
 

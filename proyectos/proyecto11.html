@@ -44,20 +44,20 @@
 		</section>
 
 		<section class="card">
-			<h2>Video explicativo</h2>
-			<div style="max-width:720px;margin:0 auto 18px;">
-				<iframe width="100%" height="405" src="https://www.youtube.com/embed/TINPALjszm8" title="LED RGB Arduino" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:10px;border:1px solid var(--card-border);"></iframe>
-			</div>
+			<h2>Paso a paso</h2>
+			<ol>
+				<li>Conecta el cátodo común a GND.</li>
+				<li>Conecta los tres ánodos (R,G,B) a pines PWM mediante resistencias 220Ω.</li>
+				<li>En <code>setup()</code> configura los pines como <code>OUTPUT</code>.</li>
+				<li>Usa <code>analogWrite(r,g,b)</code> para variar cada canal 0–255 y mezclar colores.</li>
+				<li>Prueba paletas básicas (rojo, verde, azul, amarillo, blanco) en el simulador.</li>
+			</ol>
 		</section>
 
 		<section class="card">
-			<h2>Simulador: monta y prueba el LED RGB</h2>
-			<p>Abre el simulador Wokwi, conecta el LED RGB cátodo común y prueba variando los valores PWM.</p>
-			<div style="max-width:900px;margin:0 auto 12px;">
-				<iframe src="https://wokwi.com/projects/447440091448624129" width="100%" height="520" style="border:1px solid var(--card-border);border-radius:10px;background:#fff;" allowfullscreen loading="lazy"></iframe>
-			</div>
-
-			<div style="text-align:center;margin-top:12px;">
+			<h2>Video explicativo</h2>
+			<div style="max-width:720px;margin:0 auto 18px;">
+				<iframe width="100%" height="405" src
 				<button class="btn" id="btn-solucion-11" type="button">Ver solución</button>
 			</div>
 
@@ -67,9 +67,15 @@
 			</div>
 		</section>
 
-		<section class="card" style="text-align:center;">
-			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
-			<a class="btn" href="../index.html">Volver al inicio</a>
+		<section class="card">
+			<div class="project-footer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+				<a class="btn" href="proyecto10.html" style="min-width:120px;">← Anterior</a>
+				<div style="display:flex;gap:8px;justify-content:center;">
+					<a class="btn" href="proyectos.html">Volver a proyectos</a>
+					<a class="btn" href="../index.html">Volver al inicio</a>
+				</div>
+				<a class="btn" href="proyecto12.html" style="min-width:120px;">Siguiente →</a>
+			</div>
 		</section>
 	</main>
 

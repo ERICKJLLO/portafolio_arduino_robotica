@@ -54,6 +54,16 @@
 		</section>
 
 		<section class="card">
+			<h2>Paso a paso</h2>
+			<ol>
+				<li>Conecta potenciómetro (5V/GND/wiper a A0) y LED en pin PWM con resistencia.</li>
+				<li>Configura <code>pinMode(ledPin, OUTPUT)</code> en <code>setup()</code>.</li>
+				<li>Lee valor con <code>analogRead(A0)</code>, mapea y aplica <code>analogWrite(ledPin, out);</code>.</li>
+				<li>Prueba y calibra el rango si el brillo no se ajusta linealmente.</li>
+			</ol>
+		</section>
+
+		<section class="card">
 			<h2>Simulador: monta y prueba</h2>
 			<p>Abre el simulador Wokwi y construye el circuito para controlar el LED con el potenciómetro:</p>
 			<div style="max-width:900px;margin:0 auto 12px;">
@@ -70,9 +80,15 @@
 			</div>
 		</section>
 
-		<section class="card" style="text-align:center;">
-			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
-			<a class="btn" href="../index.html">Volver al inicio</a>
+		<section class="card">
+			<div class="project-footer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+				<a class="btn" href="proyecto6.html" style="min-width:120px;">← Anterior</a>
+				<div style="display:flex;gap:8px;justify-content:center;">
+					<a class="btn" href="proyectos.html">Volver a proyectos</a>
+					<a class="btn" href="../index.html">Volver al inicio</a>
+				</div>
+				<a class="btn" href="proyecto8.html" style="min-width:120px;">Siguiente →</a>
+			</div>
 		</section>
 	</main>
 

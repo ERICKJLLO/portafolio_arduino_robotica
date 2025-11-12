@@ -43,7 +43,16 @@
 			</div>
 		</section>
 
-
+		<section class="card">
+			<h2>Paso a paso</h2>
+			<ol>
+				<li>Conecta 4 LEDs a pines digitales (ej. 8,9,10,11) con resistencias de 220Ω y cátodo a GND.</li>
+				<li>En <code>setup()</code> configura esos pines como <code>OUTPUT</code>.</li>
+				<li>En <code>loop()</code> recorre valores 0..15 y usa <code>bitRead(val, b)</code> para encender cada LED según el bit.</li>
+				<li>Añade un <code>delay(500)</code> entre incrementos para ver el conteo.</li>
+				<li>Prueba en el simulador y ajusta el orden LSB/MSB si las posiciones no coinciden.</li>
+			</ol>
+		</section>
 
 		<section class="card">
 			<h2>Simulador: monta tu contador binario</h2>
@@ -62,9 +71,15 @@
 			</div>
 		</section>
 
-		<section class="card" style="text-align:center;">
-			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
-			<a class="btn" href="../index.html">Volver al inicio</a>
+		<section class="card">
+			<div class="project-footer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+				<a class="btn" href="proyecto1.html" style="min-width:120px;">← Anterior</a>
+				<div style="display:flex;gap:8px;justify-content:center;">
+					<a class="btn" href="proyectos.html">Volver a proyectos</a>
+					<a class="btn" href="../index.html">Volver al inicio</a>
+				</div>
+				<a class="btn" href="proyecto3.html" style="min-width:120px;">Siguiente →</a>
+			</div>
 		</section>
 	</main>
 

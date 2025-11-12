@@ -54,6 +54,17 @@
 		</section>
 
 		<section class="card">
+			<h2>Paso a paso</h2>
+			<ol>
+				<li>Conecta el potenciómetro: extremos a 5V y GND, cursor (wiper) a A0.</li>
+				<li>Conecta un LED con resistencia a un pin PWM (ej. 9) y GND.</li>
+				<li>En <code>loop()</code> lee <code>analogRead(A0)</code>, mapea 0..1023 a 0..255 con <code>map()</code>.</li>
+				<li>Pasa el valor mapeado a <code>analogWrite(ledPin, out);</code> y prueba girando el potenciómetro.</li>
+				<li>Ajusta filtros (promedio) si deseas un cambio de brillo más suave.</li>
+			</ol>
+		</section>
+
+		<section class="card">
 			<h2>Simulador: prueba tu montaje</h2>
 			<p>Abre el simulador Wokwi, conecta el potenciómetro y prueba el código.</p>
 			<div style="max-width:900px;margin:0 auto 12px;">
@@ -70,9 +81,15 @@
 			</div>
 		</section>
 
-		<section class="card" style="text-align:center;">
-			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
-			<a class="btn" href="../index.html">Volver al inicio</a>
+		<section class="card">
+			<div class="project-footer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+				<a class="btn" href="proyecto4.html" style="min-width:120px;">← Anterior</a>
+				<div style="display:flex;gap:8px;justify-content:center;">
+					<a class="btn" href="proyectos.html">Volver a proyectos</a>
+					<a class="btn" href="../index.html">Volver al inicio</a>
+				</div>
+				<a class="btn" href="proyecto6.html" style="min-width:120px;">Siguiente →</a>
+			</div>
 		</section>
 	</main>
 

@@ -58,9 +58,26 @@
 			</div>
 		</section>
 
-		<section class="card" style="text-align:center;">
-			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
-			<a class="btn" href="../index.html">Volver al inicio</a>
+		<section class="card">
+			<h2>Paso a paso</h2>
+			<ol>
+				<li>Conecta el LED RGB como en el proyecto anterior (cátodo común o ánodo según tu componente).</li>
+				<li>Crea una función <code>setColor(r,g,b)</code> que haga <code>analogWrite()</code> en cada canal.</li>
+				<li>Prueba combinaciones: (255,0,0)=rojo, (255,255,0)=amarillo, (255,255,255)=blanco.</li>
+				<li>Experimente con valores intermedios para obtener tonos (ej.: morado = (128,0,128)).</li>
+				<li>Usa el simulador para ajustar y guardar paletas.</li>
+			</ol>
+		</section>
+
+		<section class="card">
+			<div class="project-footer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+				<a class="btn" href="proyecto11.html" style="min-width:120px;">← Anterior</a>
+				<div style="display:flex;gap:8px;justify-content:center;">
+					<a class="btn" href="proyectos.html">Volver a proyectos</a>
+					<a class="btn" href="../index.html">Volver al inicio</a>
+				</div>
+				<a class="btn" href="proyecto13.html" style="min-width:120px;">Siguiente →</a>
+			</div>
 		</section>
 	</main>
 
@@ -76,5 +93,7 @@
 		});
 	});
 	</script>
+	<!-- script que genera navegación anterior/volver/siguiente automáticamente -->
+	<script src="../js/project-nav.js" defer></script>
 </body>
 </html>

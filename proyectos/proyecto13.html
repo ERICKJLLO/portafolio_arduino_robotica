@@ -65,9 +65,26 @@
 			</div>
 		</section>
 
-		<section class="card" style="text-align:center;">
-			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
-			<a class="btn" href="../index.html">Volver al inicio</a>
+		<section class="card">
+			<h2>Paso a paso</h2>
+			<ol>
+				<li>Conecta el zumbador activo al pin digital (ej. 8) y GND (resistencia si recomienda el fabricante).</li>
+				<li>En <code>setup()</code> configura el pin como <code>OUTPUT</code>.</li>
+				<li>Activa con <code>digitalWrite(buzzer, HIGH)</code> y apaga con <code>LOW</code>. Para tonos use <code>tone(pin, frecuencia)</code> si es pasivo.</li>
+				<li>Prueba ritmos simples (encendido/apagado con delay) y luego tonos con <code>tone()</code> si aplica.</li>
+				<li>Comprueba volumen y duración antes de usar en clase.</li>
+			</ol>
+		</section>
+
+		<section class="card">
+			<div class="project-footer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+				<a class="btn" href="proyecto12.html" style="min-width:120px;">← Anterior</a>
+				<div style="display:flex;gap:8px;justify-content:center;">
+					<a class="btn" href="proyectos.html">Volver a proyectos</a>
+					<a class="btn" href="../index.html">Volver al inicio</a>
+				</div>
+				<a class="btn" href="proyecto14.html" style="min-width:120px;">Siguiente →</a>
+			</div>
 		</section>
 	</main>
 

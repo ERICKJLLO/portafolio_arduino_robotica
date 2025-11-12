@@ -41,6 +41,17 @@
 		</section>
 		
 		<section class="card" style="margin-bottom:22px;">
+			<h2>Paso a paso</h2>
+			<ol>
+				<li>Conecta el ánodo (patita larga) del LED a un pin digital (ej. 13) mediante una resistencia de 220Ω y el cátodo a GND.</li>
+				<li>En el IDE crea un sketch: en <code>setup()</code> usa <code>pinMode(13, OUTPUT);</code>.</li>
+				<li>En <code>loop()</code> alterna con <code>digitalWrite(13, HIGH); delay(1000); digitalWrite(13, LOW); delay(1000);</code>.</li>
+				<li>Sube el código o ejecútalo en el simulador y verifica que el LED parpadee.</li>
+				<li>Si no enciende, revisa polaridad del LED y la conexión de la resistencia.</li>
+			</ol>
+		</section>
+
+		<section class="card" style="margin-bottom:22px;">
 			<h2>Simulador: ¡Haz tu propio circuito y código!</h2>
 			<p>Realiza el montaje y programa el Arduino para encender y apagar el LED, como se muestra en el video. Usa el simulador interactivo a continuación:</p>
 			<div style="max-width:800px;margin:0 auto 18px;">
@@ -55,9 +66,20 @@
 			</div>
 		</section>
 
-		<section class="card" style="text-align:center;">
-			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
-			<a class="btn" href="../index.html">Volver al inicio</a>
+		<section class="card">
+			<div class="project-footer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+				<!-- Anterior -->
+				<button class="btn" disabled aria-disabled="true" style="min-width:120px;opacity:.6;cursor:not-allowed;">← Anterior</button>
+
+				<!-- Volver (centro) -->
+				<div style="display:flex;gap:8px;justify-content:center;">
+					<a class="btn" href="proyectos.html">Volver a proyectos</a>
+					<a class="btn" href="../index.html">Volver al inicio</a>
+				</div>
+
+				<!-- Siguiente -->
+				<a class="btn" href="proyecto2.html" style="min-width:120px;text-align:right;">Siguiente →</a>
+			</div>
 		</section>
 	</main>
 

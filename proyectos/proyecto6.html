@@ -75,9 +75,26 @@
 			</div>
 		</section>
 
-		<section class="card" style="text-align:center;">
-			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
-			<a class="btn" href="../index.html">Volver al inicio</a>
+		<section class="card">
+			<h2>Paso a paso</h2>
+			<ol>
+				<li>Decide la entrada (botón, potenciómetro, sensor) y la salida (LED).</li>
+				<li>Conecta el sensor y configura pines en <code>setup()</code>.</li>
+				<li>En <code>loop()</code> lee la entrada y aplica una condición: <code>if(valor &gt; umbral){ digitalWrite(led,HIGH);} else {digitalWrite(led,LOW);}</code>.</li>
+				<li>Ajusta el umbral y prueba con el simulador para comprobar la respuesta.</li>
+				<li>Agrega <code>else if</code> para múltiples rangos/acciones si es necesario.</li>
+			</ol>
+		</section>
+
+		<section class="card">
+			<div class="project-footer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+				<a class="btn" href="proyecto5.html" style="min-width:120px;">← Anterior</a>
+				<div style="display:flex;gap:8px;justify-content:center;">
+					<a class="btn" href="proyectos.html">Volver a proyectos</a>
+					<a class="btn" href="../index.html">Volver al inicio</a>
+				</div>
+				<a class="btn" href="proyecto7.html" style="min-width:120px;">Siguiente →</a>
+			</div>
 		</section>
 	</main>
 

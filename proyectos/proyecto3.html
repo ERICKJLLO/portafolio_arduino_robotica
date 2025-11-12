@@ -55,9 +55,26 @@
 			</div>
 		</section>
 
-		<section class="card" style="text-align:center;">
-			<a class="btn" href="proyectos.html" style="margin-right:10px;">Volver a proyectos</a>
-			<a class="btn" href="../index.html">Volver al inicio</a>
+		<section class="card">
+			<h2>Paso a paso</h2>
+			<ol>
+				<li>Conecta un LED con resistencia a un pin PWM (ej. 9) y GND.</li>
+				<li>En <code>setup()</code> declara el pin como <code>OUTPUT</code>.</li>
+				<li>En <code>loop()</code> utiliza <code>analogWrite(pin, valor);</code> con <code>valor</code> entre 0 y 255 para variar brillo.</li>
+				<li>Prueba cambiando el valor manualmente o usando <code>map()</code> desde un potenciómetro.</li>
+				<li>Ejecuta en el simulador y observa la variación de brillo.</li>
+			</ol>
+		</section>
+
+		<section class="card">
+			<div class="project-footer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+				<a class="btn" href="proyecto2.html" style="min-width:120px;">← Anterior</a>
+				<div style="display:flex;gap:8px;justify-content:center;">
+					<a class="btn" href="proyectos.html">Volver a proyectos</a>
+					<a class="btn" href="../index.html">Volver al inicio</a>
+				</div>
+				<a class="btn" href="proyecto4.html" style="min-width:120px;">Siguiente →</a>
+			</div>
 		</section>
 	</main>
 
