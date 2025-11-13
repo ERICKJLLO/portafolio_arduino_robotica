@@ -1,13 +1,3 @@
-// ==UserScript==
-// @name         Project Navigation Enhancer
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  Agrega navegación anterior/siguiente en páginas de proyectos Arduino
-// @author       Tu Nombre
-// @match        *://*/*proyecto*.html
-// @grant        none
-// ==/UserScript==
-
 (function(){
 	document.addEventListener('DOMContentLoaded', function(){
 		try {
