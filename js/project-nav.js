@@ -9,18 +9,16 @@
 // ==/UserScript==
 
 (function(){
-	// Inserta navegación anterior/volver/siguiente en páginas proyectoN.html
 	document.addEventListener('DOMContentLoaded', function(){
 		try {
-			const path = window.location.pathname.replace(/\\/g,'/'); // cross-platform
+			const path = window.location.pathname.replace(/\\/g,'/');
 			const file = path.split('/').pop() || '';
 			const m = file.match(/proyecto(\d+)\.html$/i);
-			if(!m) return; // no es una página de proyecto
+			if(!m) return;
 			const num = parseInt(m[1],10);
 			const prev = num > 1 ? `proyecto${num-1}.html` : null;
-			const next = num < 15 ? `proyecto${num+1}.html` : null; // asumiendo 15 proyectos planeados
+			const next = num < 15 ? `proyecto${num+1}.html` : null;
 
-			// buscar la card que contiene el enlace a "proyectos.html"
 			const cards = Array.from(document.querySelectorAll('section.card'));
 			let targetCard = null;
 			for(const c of cards){
@@ -29,11 +27,9 @@
 					break;
 				}
 			}
-			// si no existe, intentar buscar al final
 			if(!targetCard) targetCard = cards[cards.length-1] || null;
 			if(!targetCard) return;
 
-			// construir HTML del footer
 			const createBtn = (href, text, disabled=false) => {
 				if(disabled) return `<button class="btn" disabled aria-disabled="true" style="min-width:120px;opacity:.6;cursor:not-allowed;">${text}</button>`;
 				return `<a class="btn" href="${href}" style="min-width:120px; display:inline-flex; align-items:center; justify-content:center;">${text}</a>`;
@@ -54,18 +50,12 @@
 				</div>
 			`;
 
-			// reemplazar el contenido del targetCard por el footer manteniendo la card
-			// pero si ya existe un .project-footer no duplicar
 			if(!targetCard.querySelector('.project-footer')){
-				// eliminar nodos previos de "volver a proyectos" para evitar duplicados
-				// (si existían botones sueltos los removemos antes de insertar)
 				const volverLinks = targetCard.querySelectorAll('a[href$="proyectos.html"], a[href$="../index.html"], button[aria-disabled]');
 				volverLinks.forEach(n => n.remove());
-				// insertar footer al final de la card
 				targetCard.insertAdjacentHTML('beforeend', footerHtml);
 			}
 		} catch(e){
-			// silencioso, evitar romper la página si algo falla
 			console.error('project-nav error', e);
 		}
 	});
