@@ -550,3 +550,29 @@ section.card[style*="text-align:center"] a.btn {
 	align-self: flex-start;
 }
 
+/* estilos para lista de palabras clave (tags) */
+.keywords-list{
+	list-style:none;
+	margin:8px 0 0;
+	padding:0;
+	display:flex;
+	flex-wrap:wrap;
+	gap:8px;
+}
+.keywords-list li{
+	background: linear-gradient(90deg,var(--accent-1),var(--accent-2));
+	color:#fff;
+	padding:6px 10px;
+	border-radius:999px;
+	font-size:0.95rem;
+	box-shadow: 0 4px 12px rgba(3,64,59,0.06);
+}
+
+/* mantener contraste y legibilidad en modo oscuro/sistemas con preferencia de alto contraste */
+@media (prefers-contrast: more){
+	.keywords-list li{
+		box-shadow:none;
+		border:1px solid rgba(0,0,0,0.12);
+	}
+}
+
