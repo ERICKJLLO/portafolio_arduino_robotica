@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<meta name="keywords" content="Arduino, LED, digitalWrite, pinMode, blink, parpadeo, electrónica básica" />
+	<title>Proyecto introductorio - Encender un LED</title>
+	<link rel="stylesheet" href="../estilos/styles.css">
+</head>
+<body>
+    <header class="site-header">
+	    <h1>Proyecto introductorio - Encender un LED</h1>
+		<nav>
+			<a href="../index.html">Inicio</a>
+			<a href="proyectos.html">Proyectos</a>
+		</nav>
+	    </header>
+
+        <main>  
+            <section id="introduccion" class="card span-2">
+                <h2>Introducción</h2>
+                <p> En este proyecto introductorio aprenderas a encender y pagar un led mediantea un simulador integrado.</p>
+            </section>
+
+            <section class="card" style="grid-column: 1 / -1;">
+                <!-- mantenemos el layout de programación con sidebar -->
+                <div class="program-layout">
+                    <div>
+                        <h3>Ejemplo: lectura de botón con debounce</h3>
+                        <pre>// const int BTN = 2;
+const int LED = 13;
+unsigned long lastChange = 0;
+const unsigned long debounce = 40;
+int state = HIGH;
+void setup(){ pinMode(BTN, INPUT_PULLUP); pinMode(LED, OUTPUT); }
+void loop(){
+  int reading = digitalRead(BTN);
+  if(reading != state && (millis() - lastChange) > debounce){
+    state = reading;
+    lastChange = millis();
+    digitalWrite(LED, state == LOW ? HIGH : LOW);
+  }
+}</pre>
+						<div class="code-actions">
+							<button class="btn run-btn" data-action="run" data-example="blink-simple">Ejecutar</button>
+							<button class="btn" data-action="stop" data-example="blink-simple">Detener</button>
+						</div>
+					</div>
+
+					<aside class="program-sidebar">
+						<!-- simulador grande a la derecha (sin cambios funcionales) -->
+						<div class="simulator-panel" id="sim-panel" aria-live="polite">
+							<h3 style="margin-top:0;margin-bottom:8px;">Simulador</h3>
+							<div class="simulator-main">
+								<div class="sim-device">
+									<label style="display:block;font-size:.9rem;margin-bottom:8px;color:var(--muted)">LED virtual</label>
+									<div class="led-large" id="sim-led" title="LED virtual"></div>
+								</div>
+								<div class="sim-console" id="sim-console" aria-hidden="false" role="log">
+									<div class="console-header">Serial</div>
+									<div class="console-body" id="sim-console-body"></div>
+								</div>
+							</div>
+							<div class="sim-controls" style="margin-top:12px;display:flex;gap:8px;">
+								<button class="btn" id="sim-stop">Detener</button>
+								<button class="btn" id="sim-reset">Reiniciar</button>
+								<div style="margin-left:auto;color:var(--muted);font-size:.9rem" id="sim-status">Estado: inactivo</div>
+							</div>
+						</div>
+
+						<!-- resumen y checklist -->
+						<div style="margin-top:12px;">
+							<h4 style="margin-bottom:8px;">Resumen rápido</h4>
+							<ul style="padding-left:18px;margin-top:0;margin-bottom:10px;line-height:1.35;">
+								<li>Inicia <code>Serial.begin(9600)</code> para depurar.</li>
+								<li>Usa constantes descriptivas: <code>const int LED = 13;</code></li>
+								<li>Evita <code>delay()</code> si necesitas multitarea.</li>
+							</ul>
+							<a class="btn" href="proyectos/proyectos.html" style="display:inline-block;margin-top:8px;">Ir a proyectos</a>
+						</div>
+					</aside>
+				</div>
+            </section>
+            
+            <section class="card">
+                <div class="project-footer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                    <!-- Anterior -->
+                    <a class="btn" href="proyectos.html" style="min-width:120px;">← Anterior</a>
+                    <!-- Volver (centro) -->
+                    <div style="display:flex;gap:8px;justify-content:center;">
+                        <a class="btn" href="proyectos.html">Volver a proyectos</a>
+                        <a class="btn" href="../index.html">Volver al inicio</a>
+                    </div>
+
+                    <!-- Siguiente -->
+                    <a class="btn" href="proyecto1.html" style="min-width:120px;text-align:right;">Siguiente →</a>
+                </div>
+            </section>
+
+        </main>
+        <script src="js/ui.js" defer></script>
+	    <script src="js/simulator.js" defer></script>
+</body>
+</html>
